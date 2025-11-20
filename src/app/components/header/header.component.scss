@@ -1,0 +1,151 @@
+@use '../../../styles/variables' as *;
+
+.header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+
+  &__container {
+    padding: 1rem $container-padding-mobile;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @media (min-width: $breakpoint-md) {
+      padding: 1rem $container-padding-tablet;
+    }
+
+    @media (min-width: $breakpoint-lg) {
+      padding: 1rem $container-padding-desktop;
+    }
+
+    @media (min-width: $breakpoint-xl) {
+      padding: 1rem $container-padding-wide;
+    }
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+
+    &-link {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    &-img {
+      height: 50px;
+      width: auto;
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+  }
+
+  &__menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 2rem;
+    align-items: center;
+
+    &-item {
+      margin: 0;
+      padding: 0;
+    }
+
+    &-link {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      font-size: 1rem;
+      padding: 0.5rem 0;
+      position: relative;
+      transition: color 0.3s ease;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: #ff6b6b;
+        transition: width 0.3s ease;
+      }
+
+      &:hover {
+        color: #ff6b6b;
+
+        &::after {
+          width: 100%;
+        }
+      }
+
+      &--cta {
+        background-color: #ff6b6b;
+        color: #ffffff;
+        padding: 0.75rem 1.5rem;
+        border-radius: 25px;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+
+        &::after {
+          display: none;
+        }
+
+        &:hover {
+          background-color: #ff5252;
+          color: #ffffff;
+          transform: translateY(-2px);
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: $breakpoint-md) {
+  .header {
+    &__menu {
+      gap: 1rem;
+      font-size: 0.9rem;
+    }
+
+    &__logo-img {
+      height: 40px;
+    }
+  }
+}
+
+@media (max-width: $breakpoint-sm) {
+  .header {
+    &__menu {
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: flex-end;
+    }
+
+    &__menu-link {
+      font-size: 0.85rem;
+      padding: 0.4rem 0;
+
+      &--cta {
+        padding: 0.6rem 1rem;
+      }
+    }
+  }
+}
+
