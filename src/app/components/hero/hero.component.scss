@@ -1,0 +1,96 @@
+@use '../../../styles/variables' as *;
+
+.hero {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  
+  &__container {
+    width: 100%;
+    padding: 0 $container-padding-mobile;
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    min-height: 100vh;
+    
+    @media (min-width: $breakpoint-md) {
+      padding: 0 $container-padding-tablet;
+    }
+
+    @media (min-width: $breakpoint-lg) {
+      padding: 0 $container-padding-desktop;
+    }
+
+    @media (min-width: $breakpoint-xl) {
+      padding: 0 $container-padding-wide;
+    }
+  }
+  
+  &__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 3rem 4rem;
+    background-color: #ffffff;
+    
+    @media (max-width: 768px) {
+      padding: 2rem 1.5rem;
+    }
+  }
+  
+  &__title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.2;
+    color: #1a1a1a;
+    margin: 0 0 1.5rem 0;
+    
+    @media (max-width: 768px) {
+      font-size: clamp(1.75rem, 6vw, 2.5rem);
+      margin-bottom: 1rem;
+    }
+  }
+  
+  &__slogan {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    line-height: 1.6;
+    color: #555;
+    margin: 0;
+    max-width: 600px;
+    
+    @media (max-width: 768px) {
+      font-size: 1rem;
+    }
+  }
+  
+  &__image-wrapper {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+    
+    @media (max-width: 768px) {
+      min-height: 50vh;
+    }
+  }
+  
+  &__image {
+    width: 100%;
+    height: 150%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+  
+  @media (max-width: 768px) {
+    &__container {
+      flex-direction: column;
+      min-height: 100vh;
+    }
+  }
+}
+
