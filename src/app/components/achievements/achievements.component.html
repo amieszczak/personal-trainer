@@ -1,0 +1,39 @@
+<section class="achievements" id="osiagniecia">
+  <div class="achievements__container">
+    <div class="achievements__content">
+      <h2 class="achievements__mobile-title">Osiągnięcia</h2>
+      
+      <ul class="achievements__list" #achievementsList>
+        <li class="achievements__item" *ngFor="let achievement of achievements">
+          <div class="achievements__item-header" (click)="toggleAchievement(achievement.id)">
+            <h3 class="achievements__item-title">{{ achievement.title }}</h3>
+            <svg 
+              class="achievements__item-icon" 
+              [class.achievements__item-icon--active]="achievement.expanded"
+              width="24" 
+              height="24" 
+              viewBox="0 0 24 24" 
+              fill="none" 
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="achievements__item-description" [class.achievements__item-description--expanded]="achievement.expanded">
+            <p>{{ achievement.description }}</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+    
+    <div class="achievements__title-wrapper" #titleWrapper>
+      <div class="achievements__title-content">
+        <h2 class="achievements__title">Osiągnięcia</h2>
+        <p class="achievements__title-description">
+          Lata ciężkiej pracy, setki transformacji i nieustanny rozwój. 
+          To nie tylko liczby – to prawdziwe historie sukcesów moich klientów.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
