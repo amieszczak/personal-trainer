@@ -1,0 +1,287 @@
+@import '../../../styles/variables';
+
+.transformations {
+  height: 75vh;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 2rem 0;
+  overflow: hidden;
+
+  &__container {
+    width: 100%;
+    height: 100%;
+    padding: 0 $container-padding-mobile;
+    display: flex;
+    flex-direction: column;
+    
+    @media (min-width: $breakpoint-md) {
+      padding: 0 $container-padding-tablet;
+    }
+
+    @media (min-width: $breakpoint-lg) {
+      padding: 0 $container-padding-desktop;
+    }
+
+    @media (min-width: $breakpoint-xl) {
+      padding: 0 $container-padding-wide;
+    }
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: 2rem;
+    flex-shrink: 0;
+  }
+
+  &__title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 0.5rem;
+    
+    @media (max-width: $breakpoint-md) {
+      font-size: 2rem;
+    }
+  }
+
+  &__subtitle {
+    font-size: 1.125rem;
+    color: #666;
+  }
+
+  &__slider-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 1;
+    min-height: 0; // Allow flex children to shrink
+    overflow: hidden; // Clip the slider edges
+    
+    @media (min-width: $breakpoint-lg) {
+      gap: 2rem;
+    }
+  }
+
+  &__slider {
+    flex: 1;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
+  &__slides {
+    display: flex;
+    width: 100%;
+    
+    &--two-visible {
+      .transformations__slide {
+        flex: 0 0 50%;
+        min-width: 50%;
+        padding: 0 0.5rem;
+        
+        @media (min-width: $breakpoint-lg) {
+          padding: 0 1rem;
+        }
+      }
+    }
+    
+    &--three-visible {
+      .transformations__slide {
+        flex: 0 0 33.333%;
+        min-width: 33.333%;
+        padding: 0 0.75rem;
+        
+        @media (min-width: $breakpoint-lg) {
+          padding: 0 1rem;
+        }
+      }
+    }
+  }
+
+  &__slide {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    box-sizing: border-box;
+    
+    .transformations__card {
+      opacity: 0.4;
+      filter: grayscale(20%);
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    &--active {
+      .transformations__card {
+        opacity: 1;
+        filter: grayscale(0%);
+        transform: scale(1.02);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        
+        @media (min-width: $breakpoint-lg) {
+          transform: scale(1.05);
+        }
+      }
+    }
+  }
+
+  &__card {
+    background: white;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    max-height: 100%;
+    overflow: hidden;
+    
+    @media (max-width: $breakpoint-md) {
+      padding: 1.25rem;
+    }
+  }
+
+  &__card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #f0f0f0;
+  }
+
+  &__card-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0;
+    
+    @media (max-width: $breakpoint-md) {
+      font-size: 1.25rem;
+    }
+  }
+
+  &__card-age {
+    font-size: 0.875rem;
+    color: #666;
+    background: #f8f9fa;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+  }
+
+  &__card-description {
+    font-size: 1.125rem;
+    color: #2c5aa0;
+    margin-bottom: 1rem;
+    
+    strong {
+      font-weight: 600;
+    }
+    
+    @media (max-width: $breakpoint-md) {
+      font-size: 1rem;
+    }
+  }
+
+  &__card-story {
+    flex: 1;
+    margin-bottom: 1.5rem;
+    overflow-y: auto;
+    min-height: 0;
+    
+    p {
+      color: #4a4a4a;
+      line-height: 1.6;
+      font-size: 0.938rem;
+    }
+  }
+
+  &__card-quote {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-left: 4px solid #2c5aa0;
+    padding: 1rem;
+    border-radius: 8px;
+    position: relative;
+  }
+
+  &__quote-icon {
+    color: #2c5aa0;
+    opacity: 0.3;
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+  }
+
+  &__quote-text {
+    font-style: italic;
+    color: #333;
+    margin: 0;
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+
+  &__nav-button {
+    background: white;
+    border: 2px solid #e0e0e0;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #333;
+    flex-shrink: 0;
+    z-index: 10;
+    
+    &:hover {
+      background: #2c5aa0;
+      border-color: #2c5aa0;
+      color: white;
+    }
+    
+    @media (max-width: $breakpoint-md) {
+      width: 40px;
+      height: 40px;
+    }
+    
+    // Hide on very small screens
+    @media (max-width: 480px) {
+      display: none;
+    }
+  }
+
+  &__dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+    flex-shrink: 0;
+  }
+
+  &__dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #d0d0d0;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+    
+    &:hover {
+      background: #2c5aa0;
+      transform: scale(1.2);
+    }
+    
+    &--active {
+      background: #2c5aa0;
+      width: 30px;
+      border-radius: 5px;
+    }
+  }
+}
+
