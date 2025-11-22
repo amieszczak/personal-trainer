@@ -5,10 +5,11 @@ import { HeroComponent } from './components/hero/hero.component';
 import { AchievementsComponent } from './components/achievements/achievements.component';
 import { TransformationsComponent } from './components/transformations/transformations.component';
 import { GalleryComponent } from './components/gallery/gallery.component';
+import { AboutMeComponent } from './components/about-me/about-me.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HeaderComponent, HeroComponent, AchievementsComponent, TransformationsComponent, GalleryComponent],
+  imports: [RouterOutlet, HeaderComponent, HeroComponent, AchievementsComponent, TransformationsComponent, GalleryComponent, AboutMeComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
