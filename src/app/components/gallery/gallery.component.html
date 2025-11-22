@@ -1,0 +1,93 @@
+<section class="gallery" id="galeria">
+  <div class="gallery__background-stripe"></div>
+  <div class="gallery__container">
+    <h2 class="gallery__title">Galeria</h2>
+    
+    <div class="gallery__preview-section">
+      <div class="gallery__preview-image-wrapper">
+        <img 
+          [src]="'images/gallery/' + selectedImage.filename" 
+          [alt]="selectedImage.name" 
+          class="gallery__preview-image"
+        />
+      </div>
+      
+      <div class="gallery__right-section">
+        <div class="gallery__preview-description">
+          <h3 class="gallery__preview-name">{{ selectedImage.name }}</h3>
+          <p class="gallery__preview-text">{{ selectedImage.description }}</p>
+        </div>
+
+        <!-- Desktop Grid (768px+) -->
+        <div class="gallery__grid-wrapper gallery__grid-wrapper--desktop">
+          <div class="gallery__grid">
+            <div 
+              *ngFor="let image of galleryImages" 
+              class="gallery__grid-item"
+              [class.gallery__grid-item--active]="selectedImage.id === image.id"
+              (click)="goToSlide(image.id - 1)"
+            >
+              <img 
+                [src]="'images/gallery/' + image.filename" 
+                [alt]="image.name" 
+                class="gallery__grid-image"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile Slider (below 768px) -->
+        <div class="gallery__slider-wrapper gallery__slider-wrapper--mobile">
+          <button 
+            class="gallery__nav-button gallery__nav-button--prev"
+            (click)="previousSlide()"
+            aria-label="Poprzednie zdjęcie"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+
+          <div 
+            class="gallery__slider"
+            (touchstart)="onTouchStart($event)"
+            (touchend)="onTouchEnd($event)"
+          >
+            <div 
+              class="gallery__slides"
+              [style.transform]="'translateX(' + translateX + '%)'"
+              [style.transition]="isTransitioning ? 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)' : 'none'"
+              [style.width]="(100 / slidesVisible) + '%'"
+            >
+              <div 
+                *ngFor="let image of allSlides; let i = index"
+                class="gallery__slide"
+                [class.gallery__slide--active]="i === currentIndex"
+                (click)="goToSlide(getActualIndex(i))"
+              >
+                <div class="gallery__tile">
+                  <img 
+                    [src]="'images/gallery/' + image.filename" 
+                    [alt]="image.name" 
+                    class="gallery__tile-image"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button 
+            class="gallery__nav-button gallery__nav-button--next"
+            (click)="nextSlide()"
+            aria-label="Następne zdjęcie"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
