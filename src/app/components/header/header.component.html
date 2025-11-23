@@ -11,25 +11,29 @@
         </div>
       </div>
     </div>
-    <nav class="header__nav">
+
+    <!-- Hamburger Button -->
+    <button 
+      class="header__hamburger" 
+      [class.header__hamburger--active]="isMobileMenuOpen"
+      (click)="toggleMobileMenu()"
+      aria-label="Toggle menu">
+      <span class="header__hamburger-line"></span>
+      <span class="header__hamburger-line"></span>
+      <span class="header__hamburger-line"></span>
+    </button>
+
+    <!-- Unified Navigation -->
+    <nav class="header__nav" [class.header__nav--mobile-open]="isMobileMenuOpen">
       <ul class="header__menu">
-        <li class="header__menu-item">
-          <a href="#osiagniecia" class="header__menu-link" (click)="scrollToSection('osiagniecia', $event)">Osiągnięcia</a>
-        </li>
-        <li class="header__menu-item">
-          <a href="#przemiany" class="header__menu-link" (click)="scrollToSection('przemiany', $event)">Przemiany</a>
-        </li>
-        <li class="header__menu-item">
-          <a href="#galeria" class="header__menu-link" (click)="scrollToSection('galeria', $event)">Galeria</a>
-        </li>
-        <li class="header__menu-item">
-          <a href="#o-mnie" class="header__menu-link" (click)="scrollToSection('o-mnie', $event)">O mnie</a>
-        </li>
-        <li class="header__menu-item">
-          <a href="#umow-trening" class="header__menu-link header__menu-link--cta" (click)="scrollToSection('umow-trening', $event)">Umów trening</a>
-        </li>
-        <li class="header__menu-item">
-          <a href="#kontakt" class="header__menu-link" (click)="scrollToSection('kontakt', $event)">Kontakt</a>
+        <li class="header__menu-item" *ngFor="let item of menuItems">
+          <a 
+            [href]="'#' + item.id" 
+            class="header__menu-link" 
+            [class.header__menu-link--cta]="item.isCta"
+            (click)="scrollToSection(item.id, $event)">
+            {{ item.label }}
+          </a>
         </li>
       </ul>
     </nav>
