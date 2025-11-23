@@ -6,10 +6,11 @@ import { AchievementsComponent } from './components/achievements/achievements.co
 import { TransformationsComponent } from './components/transformations/transformations.component';
 import { GalleryComponent } from './components/gallery/gallery.component';
 import { AboutMeComponent } from './components/about-me/about-me.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HeaderComponent, HeroComponent, AchievementsComponent, TransformationsComponent, GalleryComponent, AboutMeComponent],
+  imports: [RouterOutlet, HeaderComponent, HeroComponent, AchievementsComponent, TransformationsComponent, GalleryComponent, AboutMeComponent, FooterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
