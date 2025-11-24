@@ -29,3 +29,262 @@ body {
   line-height: 1.6;
   color: #333;
 }
+
+// Material Dialog backdrop and overlay z-index fixes
+// Booking modal backdrop - base layer
+.cdk-overlay-backdrop.booking-modal-backdrop {
+  z-index: 1000 !important;
+  background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+// All backdrops
+.cdk-overlay-backdrop {
+  &.cdk-overlay-transparent-backdrop {
+    pointer-events: none !important;
+  }
+  
+  // Ensure backdrop for datepicker doesn't block
+  &.mat-datepicker-popup {
+    pointer-events: none !important;
+  }
+}
+
+// Dialog overlay pane - ABOVE backdrop
+.cdk-overlay-pane.booking-modal-dialog {
+  z-index: 1001 !important;
+}
+
+// Ensure dialog container is above backdrop
+.booking-modal-dialog .mat-mdc-dialog-container {
+  background: transparent !important;
+  position: relative !important;
+}
+
+// Datepicker and select overlays - ABOVE dialog
+.cdk-overlay-pane {
+  &:not(.booking-modal-dialog) {
+    z-index: 1500 !important;
+    pointer-events: auto !important;
+  }
+  
+  // Specifically for datepicker
+  &:has(.mat-datepicker-popup) {
+    z-index: 1500 !important;
+    pointer-events: auto !important;
+    
+    // Make sure nothing blocks the datepicker
+    .mat-datepicker-popup,
+    .mat-datepicker-content,
+    .mat-calendar {
+      pointer-events: auto !important;
+    }
+  }
+}
+
+// Ensure select and datepicker panels are above everything
+.mat-mdc-select-panel {
+  z-index: 1500 !important;
+  background: #ffffff !important;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3) !important;
+}
+
+.mat-datepicker-popup {
+  z-index: 1500 !important;
+}
+
+.mat-datepicker-content {
+  z-index: 1500 !important;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3) !important;
+  background: #ffffff !important;
+}
+
+// Ensure calendar is fully interactive
+.mat-calendar {
+  z-index: 1500 !important;
+}
+
+// Make all calendar elements clickable - CRITICAL FIX
+.mat-calendar-body-cell {
+  pointer-events: auto !important;
+  position: relative !important;
+  z-index: 1 !important;
+  
+  &:not(.mat-calendar-body-disabled) {
+    cursor: pointer !important;
+    
+    .mat-calendar-body-cell-content {
+      pointer-events: auto !important;
+      cursor: pointer !important;
+      position: relative !important;
+      z-index: 2 !important;
+    }
+  }
+}
+
+.mat-calendar-previous-button,
+.mat-calendar-next-button,
+.mat-calendar-period-button {
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  z-index: 2 !important;
+}
+
+.mat-calendar-body,
+.mat-calendar-table {
+  pointer-events: auto !important;
+}
+
+// Ensure the calendar container allows interaction
+.mat-datepicker-content-container {
+  pointer-events: auto !important;
+  position: relative !important;
+}
+
+// Debug: Make calendar highly visible
+.mat-datepicker-popup {
+  .mat-calendar {
+    background: white !important;
+  }
+}
+
+// Ensure modal dialog has proper overflow
+.booking-modal-dialog {
+  .mat-mdc-dialog-surface {
+    overflow: hidden !important;
+  }
+  
+  .mat-mdc-dialog-container {
+    overflow: hidden !important;
+  }
+}
+
+// Critical: Ensure CDK overlay container is visible
+.cdk-overlay-container {
+  position: fixed;
+  z-index: 1000;
+  pointer-events: none; // Let clicks pass through to overlays
+  
+  // But enable pointer events for actual content
+  * {
+    pointer-events: auto;
+  }
+}
+
+.cdk-overlay-pane {
+  pointer-events: auto !important; // But allow clicks on the panes themselves
+}
+
+// Force visibility and positioning for datepicker
+.mat-datepicker-popup {
+  visibility: visible !important;
+  display: block !important;
+  opacity: 1 !important;
+  position: absolute !important;
+  pointer-events: auto !important;
+}
+
+.mat-datepicker-content {
+  visibility: visible !important;
+  display: block !important;
+  opacity: 1 !important;
+  background: white !important;
+  pointer-events: auto !important;
+}
+
+.mat-calendar {
+  visibility: visible !important;
+  display: block !important;
+  opacity: 1 !important;
+  background: white !important;
+  pointer-events: auto !important;
+}
+
+// Ensure the connected overlay position strategy works
+.cdk-overlay-connected-position-bounding-box {
+  position: absolute !important;
+}
+
+// Make datepicker content container highly visible and scrollable
+.mat-datepicker-content-container {
+  background: white !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
+  border-radius: 8px !important;
+  overflow: auto !important;
+  max-height: 400px !important;
+}
+
+.mat-datepicker-content-container-with-custom-header {
+  overflow: auto !important;
+  max-height: 400px !important;
+}
+
+// Custom styling for calendar to match theme
+.mat-calendar {
+  font-family: 'Roboto', sans-serif;
+  pointer-events: auto !important;
+  user-select: none;
+  overflow: auto !important;
+  max-height: 100% !important;
+  
+  // Header styling - sticky so it stays visible while scrolling
+  .mat-calendar-header {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ff5252 100%);
+    color: white;
+    padding: 0.5rem;
+    border-radius: 8px 8px 0 0;
+    pointer-events: auto !important;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 10 !important;
+  }
+  
+  .mat-calendar-period-button,
+  .mat-calendar-previous-button,
+  .mat-calendar-next-button {
+    color: white !important;
+    pointer-events: auto !important;
+    cursor: pointer !important;
+  }
+  
+  // Calendar body - ensure clicks work and scrolling
+  .mat-calendar-body {
+    pointer-events: auto !important;
+    overflow: visible !important;
+  }
+  
+  .mat-calendar-content {
+    overflow: auto !important;
+    pointer-events: auto !important;
+  }
+  
+  // Selected date styling
+  .mat-calendar-body-selected {
+    background-color: #ff6b6b !important;
+    color: white !important;
+    pointer-events: auto !important;
+  }
+  
+  // Today's date
+  .mat-calendar-body-today:not(.mat-calendar-body-selected) {
+    border-color: #ff6b6b !important;
+  }
+  
+  // Hover effect - also add active state
+  .mat-calendar-body-cell:not(.mat-calendar-body-disabled) {
+    pointer-events: auto !important;
+    
+    &:hover > .mat-calendar-body-cell-content:not(.mat-calendar-body-selected) {
+      background-color: rgba(255, 107, 107, 0.2) !important;
+    }
+    
+    &:active > .mat-calendar-body-cell-content:not(.mat-calendar-body-selected) {
+      background-color: rgba(255, 107, 107, 0.3) !important;
+    }
+  }
+}
+
+// Ensure calendar periods (month/year view) are scrollable
+.mat-calendar-body-label,
+.mat-calendar-table {
+  pointer-events: auto !important;
+}

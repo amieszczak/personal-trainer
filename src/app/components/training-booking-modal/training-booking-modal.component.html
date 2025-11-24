@@ -1,0 +1,152 @@
+<div class="booking-modal">
+  <div class="booking-modal__header">
+    <h2 class="booking-modal__title">Umów Trening</h2>
+    <button 
+      mat-icon-button 
+      class="booking-modal__close" 
+      (click)="onCancel()"
+      aria-label="Zamknij">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <div class="booking-modal__content">
+    <form [formGroup]="bookingForm" (ngSubmit)="onSubmit()">
+      
+      <!-- Date and Time Section -->
+      <div class="booking-modal__section">
+        <h3 class="booking-modal__section-title">Wybierz termin treningu</h3>
+        
+        <div class="booking-modal__datetime">
+          <!-- Date Picker -->
+          <mat-form-field appearance="outline" class="booking-modal__field booking-modal__field--date">
+            <mat-label>Data</mat-label>
+            <input 
+              matInput 
+              [matDatepicker]="picker" 
+              formControlName="date"
+              [min]="minDate"
+              placeholder="Wybierz datę"
+              (click)="picker.open()">
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker (closed)="onDatePickerClosed()"></mat-datepicker>
+            <mat-error *ngIf="isFieldInvalid('date')">
+              {{ getErrorMessage('date') }}
+            </mat-error>
+          </mat-form-field>
+
+          <!-- Time Picker -->
+          <mat-form-field appearance="outline" class="booking-modal__field booking-modal__field--time">
+            <mat-label>Godzina</mat-label>
+            <mat-select formControlName="time" placeholder="Wybierz godzinę">
+              <mat-option *ngFor="let time of availableTimes" [value]="time">
+                {{ time }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="isFieldInvalid('time')">
+              {{ getErrorMessage('time') }}
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <!-- Personal Information Section -->
+      <div class="booking-modal__section">
+        <h3 class="booking-modal__section-title">Twoje dane</h3>
+        
+        <!-- Full Name -->
+        <mat-form-field appearance="outline" class="booking-modal__field">
+          <mat-label>Imię i nazwisko</mat-label>
+          <mat-icon matPrefix>person</mat-icon>
+          <input 
+            matInput 
+            formControlName="fullName"
+            placeholder="Jan Kowalski">
+          <mat-error *ngIf="isFieldInvalid('fullName')">
+            {{ getErrorMessage('fullName') }}
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Email -->
+        <mat-form-field appearance="outline" class="booking-modal__field">
+          <mat-label>Email</mat-label>
+          <mat-icon matPrefix>email</mat-icon>
+          <input 
+            matInput 
+            type="email"
+            formControlName="email"
+            placeholder="jan.kowalski@example.com">
+          <mat-error *ngIf="isFieldInvalid('email')">
+            {{ getErrorMessage('email') }}
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Phone -->
+        <mat-form-field appearance="outline" class="booking-modal__field">
+          <mat-label>Telefon</mat-label>
+          <mat-icon matPrefix>phone</mat-icon>
+          <input 
+            matInput 
+            type="tel"
+            formControlName="phone"
+            placeholder="123456789">
+          <mat-error *ngIf="isFieldInvalid('phone')">
+            {{ getErrorMessage('phone') }}
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Message -->
+        <mat-form-field appearance="outline" class="booking-modal__field booking-modal__field--textarea">
+          <mat-label>Wiadomość (opcjonalnie)</mat-label>
+          <mat-icon matPrefix class="textarea-icon">message</mat-icon>
+          <textarea 
+            matInput 
+            formControlName="message"
+            rows="4"
+            placeholder="Czy masz jakieś pytania lub specjalne wymagania?"></textarea>
+        </mat-form-field>
+      </div>
+
+      <!-- Agreements Section -->
+      <div class="booking-modal__section booking-modal__section--agreements">
+        <h3 class="booking-modal__section-title">Zgody</h3>
+        
+        <mat-checkbox 
+          formControlName="termsAccepted"
+          class="booking-modal__checkbox">
+          Akceptuję <a href="#" class="booking-modal__link">regulamin</a> i <a href="#" class="booking-modal__link">warunki korzystania z usług</a>
+        </mat-checkbox>
+
+        <mat-checkbox 
+          formControlName="privacyAccepted"
+          class="booking-modal__checkbox">
+          Zgadzam się na przetwarzanie moich danych osobowych zgodnie z <a href="#" class="booking-modal__link">polityką prywatności</a>
+        </mat-checkbox>
+
+        <div class="booking-modal__agreement-error" *ngIf="bookingForm.hasError('required')">
+          <mat-error *ngIf="isFieldInvalid('termsAccepted') || isFieldInvalid('privacyAccepted')">
+            Musisz zaakceptować wszystkie zgody, aby kontynuować
+          </mat-error>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="booking-modal__actions">
+        <button 
+          mat-stroked-button 
+          type="button"
+          class="booking-modal__button booking-modal__button--cancel"
+          (click)="onCancel()">
+          Anuluj
+        </button>
+        <button 
+          mat-raised-button 
+          type="submit"
+          class="booking-modal__button booking-modal__button--submit"
+          [disabled]="bookingForm.invalid">
+          Zarezerwuj trening
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

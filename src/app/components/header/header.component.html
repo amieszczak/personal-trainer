@@ -31,7 +31,7 @@
             [href]="'#' + item.id" 
             class="header__menu-link" 
             [class.header__menu-link--cta]="item.isCta"
-            (click)="scrollToSection(item.id, $event)">
+            (click)="handleMenuClick(item.id, $event)">
             {{ item.label }}
           </a>
         </li>
