@@ -1,8 +1,8 @@
 <section class="transformations" id="przemiany">
   <div class="transformations__container">
     <div class="transformations__header">
-      <h2 class="transformations__title">Przemiany</h2>
-      <p class="transformations__subtitle">Historie sukcesów moich klientów</p>
+      <h2 class="transformations__title typo-section-title-sm">Przemiany</h2>
+      <p class="transformations__subtitle typo-section-subtitle">Historie sukcesów moich klientów</p>
     </div>
 
     <div class="transformations__slider-wrapper">
@@ -35,23 +35,23 @@
           >
             <div class="transformations__card">
               <div class="transformations__card-header">
-                <h3 class="transformations__card-name">{{ transformation.name }}</h3>
-                <span class="transformations__card-age">{{ transformation.age }} lat</span>
+                <h3 class="transformations__card-name typo-card-name">{{ transformation.name }}</h3>
+                <span class="transformations__card-age typo-card-badge">{{ transformation.age }} lat</span>
               </div>
               
-              <div class="transformations__card-description">
+              <div class="transformations__card-description typo-card-description">
                 <strong>{{ transformation.description }}</strong>
               </div>
               
               <div class="transformations__card-story">
-                <p>{{ transformation.story }}</p>
+                <p class="typo-card-body">{{ transformation.story }}</p>
               </div>
               
               <div class="transformations__card-quote">
                 <svg class="transformations__quote-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M3 21C3 17.134 3 15.201 3.586 13.671C4.574 11.165 6.546 9.193 9.052 8.205C10.582 7.619 12.515 7.619 16.381 7.619M7.048 3.927C8.422 3.329 10.143 3 12.286 3C18.562 3 21.7 6.138 21.7 12.414C21.7 14.557 21.371 16.278 20.773 17.652" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                 </svg>
-                <p class="transformations__quote-text">{{ transformation.quote }}</p>
+                <p class="transformations__quote-text typo-quote">{{ transformation.quote }}</p>
               </div>
             </div>
           </div>

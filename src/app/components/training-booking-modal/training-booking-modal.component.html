@@ -1,6 +1,6 @@
 <div class="booking-modal">
   <div class="booking-modal__header">
-    <h2 class="booking-modal__title">Umów Trening</h2>
+    <h2 class="booking-modal__title typo-modal-title">Umów Trening</h2>
     <button 
       mat-icon-button 
       class="booking-modal__close" 
@@ -15,7 +15,7 @@
       
       <!-- Date and Time Section -->
       <div class="booking-modal__section">
-        <h3 class="booking-modal__section-title">Wybierz termin treningu</h3>
+        <h3 class="booking-modal__section-title typo-modal-section-title">Wybierz termin treningu</h3>
         
         <div class="booking-modal__datetime">
           <!-- Date Picker -->
@@ -52,7 +52,7 @@
 
       <!-- Personal Information Section -->
       <div class="booking-modal__section">
-        <h3 class="booking-modal__section-title">Twoje dane</h3>
+        <h3 class="booking-modal__section-title typo-modal-section-title">Twoje dane</h3>
         
         <!-- Full Name -->
         <mat-form-field appearance="outline" class="booking-modal__field">
@@ -109,17 +109,17 @@
 
       <!-- Agreements Section -->
       <div class="booking-modal__section booking-modal__section--agreements">
-        <h3 class="booking-modal__section-title">Zgody</h3>
+        <h3 class="booking-modal__section-title typo-modal-section-title">Zgody</h3>
         
         <mat-checkbox 
           formControlName="termsAccepted"
-          class="booking-modal__checkbox">
+          class="booking-modal__checkbox typo-checkbox-label">
           Akceptuję <a href="#" class="booking-modal__link">regulamin</a> i <a href="#" class="booking-modal__link">warunki korzystania z usług</a>
         </mat-checkbox>
 
         <mat-checkbox 
           formControlName="privacyAccepted"
-          class="booking-modal__checkbox">
+          class="booking-modal__checkbox typo-checkbox-label">
           Zgadzam się na przetwarzanie moich danych osobowych zgodnie z <a href="#" class="booking-modal__link">polityką prywatności</a>
         </mat-checkbox>
 

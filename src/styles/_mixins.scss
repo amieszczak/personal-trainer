@@ -1,0 +1,77 @@
+@use 'variables' as *;
+
+// ========================================
+// CONTAINER PADDING MIXINS
+// ========================================
+
+// Basic container padding (horizontal only)
+// Use for standard container elements
+@mixin container-padding {
+  padding: 0 $container-padding-mobile;
+  
+  @media (min-width: $breakpoint-md) {
+    padding: 0 $container-padding-tablet;
+  }
+
+  @media (min-width: $breakpoint-lg) {
+    padding: 0 $container-padding-desktop;
+  }
+
+  @media (min-width: $breakpoint-xl) {
+    padding: 0 $container-padding-wide;
+  }
+}
+
+// Container padding with custom vertical padding
+// @param $vertical - The vertical padding value (top and bottom)
+@mixin container-padding-with-vertical($vertical) {
+  padding: $vertical $container-padding-mobile;
+  
+  @media (min-width: $breakpoint-md) {
+    padding: $vertical $container-padding-tablet;
+  }
+
+  @media (min-width: $breakpoint-lg) {
+    padding: $vertical $container-padding-desktop;
+  }
+
+  @media (min-width: $breakpoint-xl) {
+    padding: $vertical $container-padding-wide;
+  }
+}
+
+// Left padding only
+// Use for elements that need only left padding (e.g., gallery)
+@mixin container-padding-left {
+  padding-left: $container-padding-mobile;
+  
+  @media (min-width: $breakpoint-md) {
+    padding-left: $container-padding-tablet;
+  }
+
+  @media (min-width: $breakpoint-lg) {
+    padding-left: $container-padding-desktop;
+  }
+
+  @media (min-width: $breakpoint-xl) {
+    padding-left: $container-padding-wide;
+  }
+}
+
+// Negative margin left (for elements that need to break out of container)
+// Use for elements like gallery images that extend beyond container
+@mixin container-negative-margin-left {
+  margin-left: calc(-2 * $container-padding-mobile);
+  
+  @media (min-width: $breakpoint-md) {
+    margin-left: calc(-2 * $container-padding-tablet);
+  }
+
+  @media (min-width: $breakpoint-lg) {
+    margin-left: calc(-2 * $container-padding-desktop);
+  }
+
+  @media (min-width: $breakpoint-xl) {
+    margin-left: calc(-2 * $container-padding-wide);
+  }
+}

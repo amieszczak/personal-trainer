@@ -1,4 +1,5 @@
 @use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
 
 .header {
   position: sticky;
@@ -6,27 +7,15 @@
   left: 0;
   right: 0;
   z-index: 1000;
-  background-color: #ffffff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background-color: $color-bg-primary;
+  box-shadow: 0 2px 8px $color-shadow-base;
   transition: box-shadow 0.3s ease;
 
   &__container {
-    padding: 1rem $container-padding-mobile;
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    @media (min-width: $breakpoint-md) {
-      padding: 1rem $container-padding-tablet;
-    }
-
-    @media (min-width: $breakpoint-lg) {
-      padding: 1rem $container-padding-desktop;
-    }
-
-    @media (min-width: $breakpoint-xl) {
-      padding: 1rem $container-padding-wide;
-    }
+    @include container-padding-with-vertical(1rem);
   }
 
   &__logo {
@@ -74,13 +63,6 @@
     }
 
     &-top {
-      font-family: 'Roboto', sans-serif;
-      font-weight: 700;
-      font-size: 1.5rem;
-      line-height: 1;
-      letter-spacing: 0.08em;
-      color: #333;
-      text-transform: uppercase;
       white-space: nowrap;
       width: max-content;
       display: flex;
@@ -88,13 +70,6 @@
     }
 
     &-bottom {
-      font-family: 'Roboto', sans-serif;
-      font-weight: 500;
-      font-size: 0.8rem;
-      line-height: 1;
-      letter-spacing: 0.08em;
-      color: #666;
-      text-transform: uppercase;
       white-space: nowrap;
       width: max-content;
       display: flex;
@@ -113,7 +88,7 @@
       left: 0;
       width: 100%;
       height: 100vh;
-      background: linear-gradient(135deg, rgba(255, 107, 107, 0.98) 0%, rgba(255, 82, 82, 0.98) 100%);
+      background: linear-gradient(135deg, $color-primary-overlay 0%, $color-primary-overlay-dark 100%);
       z-index: 999;
       display: flex;
       align-items: center;
@@ -142,13 +117,9 @@
       }
 
       .header__menu-link {
-        color: #ffffff;
-        font-weight: 700;
-        font-size: 2.5rem;
-        letter-spacing: 0.02em;
+        color: $color-text-white;
         padding: 0.5rem 0;
-        text-transform: uppercase;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        text-shadow: 2px 2px 4px $color-shadow-darker;
 
         &::after {
           display: none;
@@ -162,7 +133,7 @@
           transform: translateY(-50%) scaleX(0);
           width: 20px;
           height: 4px;
-          background-color: #ffffff;
+          background-color: $color-text-white;
           border-radius: 2px;
           transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
           transform-origin: right;
@@ -170,7 +141,7 @@
 
         &:hover {
           transform: translateX(15px) scale(1.05);
-          text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
+          text-shadow: 3px 3px 8px $color-shadow-darkest;
 
           &::before {
             transform: translateY(-50%) scaleX(1);
@@ -183,9 +154,7 @@
         }
 
         &--cta {
-          font-size: 2.8rem;
-          font-weight: 900;
-          text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+          text-shadow: 3px 3px 6px $color-shadow-darkest;
           background-color: transparent;
           border-radius: 0;
           padding: 0.5rem 0;
@@ -224,7 +193,7 @@
     &-line {
       width: 100%;
       height: 4px;
-      background-color: #333;
+      background-color: $color-text-secondary;
       border-radius: 2px;
       transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
       transform-origin: center;
@@ -235,7 +204,7 @@
         position: absolute;
         width: 0;
         height: 100%;
-        background-color: #ff6b6b;
+        background-color: $color-primary;
         left: 0;
         top: 0;
         border-radius: 2px;
@@ -250,7 +219,7 @@
     // Transform to X when active
     &--active {
       .header__hamburger-line {
-        background-color: #ffffff;
+        background-color: $color-text-white;
 
         &:nth-child(1) {
           transform: translateY(11px) rotate(45deg) scaleX(1.2);
@@ -287,9 +256,7 @@
 
     &-link {
       text-decoration: none;
-      color: #333;
-      font-weight: 500;
-      font-size: 1rem; // Desktop/Web resolution
+      color: $color-text-secondary;
       padding: 0.5rem 0;
       position: relative;
       transition: color 0.3s ease;
@@ -301,12 +268,12 @@
         left: 0;
         width: 0;
         height: 2px;
-        background-color: #ff6b6b;
+        background-color: $color-primary;
         transition: width 0.3s ease;
       }
 
       &:hover {
-        color: #ff6b6b;
+        color: $color-primary;
 
         &::after {
           width: 100%;
@@ -314,8 +281,8 @@
       }
 
       &--cta {
-        background-color: #ff6b6b;
-        color: #ffffff;
+        background-color: $color-primary;
+        color: $color-text-white;
         padding: 0.75rem 1.5rem;
         border-radius: 25px;
         transition: background-color 0.3s ease, transform 0.3s ease;
@@ -325,24 +292,12 @@
         }
 
         &:hover {
-          background-color: #ff5252;
-          color: #ffffff;
+          background-color: $color-accent-hover;
+          color: $color-text-white;
           transform: translateY(-2px);
         }
       }
 
-      // Responsive font sizes
-      @media (max-width: $breakpoint-lg) {
-        font-size: 0.9rem; // Tablet landscape
-      }
-
-      @media (max-width: $breakpoint-md) {
-        font-size: 0.85rem; // Tablet portrait
-      }
-
-      @media (max-width: $breakpoint-sm) {
-        font-size: 0.8rem; // Mobile
-      }
     }
 
   }
@@ -420,15 +375,6 @@
         height: 40px;
       }
 
-      &-top {
-        font-size: 1.2rem;
-        letter-spacing: 0.08em;
-      }
-
-      &-bottom {
-        font-size: 0.65rem;
-        letter-spacing: 0.08em;
-      }
     }
   }
 }
@@ -457,18 +403,10 @@
       }
     }
 
-    // Smaller font sizes for mobile overlay menu
+    // Mobile overlay menu adjustments
     &__nav--mobile-open {
       .header__menu {
         gap: 1rem;
-      }
-
-      .header__menu-link {
-        font-size: 2rem;
-
-        &--cta {
-          font-size: 2.2rem;
-        }
       }
     }
   }
@@ -477,15 +415,6 @@
 // Extra small mobile devices
 @media (max-width: 480px) {
   .header {
-    &__nav--mobile-open {
-      .header__menu-link {
-        font-size: 1.6rem;
-
-        &--cta {
-          font-size: 1.8rem;
-        }
-      }
-    }
 
     &__hamburger {
       width: 28px;

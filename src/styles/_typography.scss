@@ -1,0 +1,381 @@
+@use 'variables' as *;
+
+// ========================================
+// GLOBAL TYPOGRAPHY
+// ========================================
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: $font-family-primary;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: $line-height-comfortable;
+  color: $color-text-secondary;
+}
+
+// ========================================
+// TYPOGRAPHY CLASSES
+// ========================================
+
+// Hero Title
+.typo-hero-title {
+  font-size: clamp($font-size-4xl, 5vw, $font-size-8xl);
+  font-weight: $font-weight-bold;
+  line-height: $line-height-snug;
+  color: $color-text-primary;
+  
+  @media (max-width: $breakpoint-md) {
+    font-size: clamp($font-size-3xl, 6vw, $font-size-5xl);
+  }
+}
+
+// Hero Slogan
+.typo-hero-slogan {
+  font-size: clamp($font-size-base, 2vw, $font-size-lg);
+  line-height: $line-height-comfortable;
+  color: $color-text-body;
+  
+  @media (max-width: $breakpoint-md) {
+    font-size: $font-size-base;
+  }
+}
+
+// Section Title (Large)
+.typo-section-title {
+  font-size: clamp($font-size-5xl, 5vw, $font-size-8xl);
+  font-weight: $font-weight-bold;
+  line-height: $line-height-snug;
+  color: $color-text-primary;
+  
+  @media (max-width: $breakpoint-md) {
+    font-size: $font-size-4xl;
+  }
+}
+
+// Section Title (Medium)
+.typo-section-title-md {
+  font-size: clamp($font-size-4xl, 5vw, $font-size-7xl);
+  font-weight: $font-weight-bold;
+  line-height: $line-height-snug;
+  color: $color-text-primary;
+  
+  @media (max-width: $breakpoint-md) {
+    font-size: $font-size-4xl;
+  }
+}
+
+// Section Title (Small - Contact, Achievements Mobile)
+.typo-section-title-sm {
+  font-size: $font-size-5xl;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  
+  @media (max-width: $breakpoint-md) {
+    font-size: $font-size-4xl;
+  }
+}
+
+// Section Subtitle
+.typo-section-subtitle {
+  font-size: $font-size-md;
+  color: $color-text-light;
+}
+
+// Section Description
+.typo-section-description {
+  font-size: clamp($font-size-base, 1.5vw, $font-size-md);
+  line-height: $line-height-comfortable;
+  color: $color-text-body;
+}
+
+// Card/Item Title
+.typo-card-title {
+  font-size: clamp($font-size-md, 2vw, $font-size-xl);
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-normal;
+  color: $color-text-primary;
+  
+  @media (max-width: $breakpoint-md) {
+    font-size: $font-size-lg;
+  }
+}
+
+// Card Name (Transformations)
+.typo-card-name {
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  
+  @media (max-width: $breakpoint-md) {
+    font-size: $font-size-lg;
+  }
+}
+
+// Card Description (Transformations)
+.typo-card-description {
+  font-size: $font-size-md;
+  color: $color-primary;
+  
+  @media (max-width: $breakpoint-md) {
+    font-size: $font-size-base;
+  }
+}
+
+// Card Age/Badge
+.typo-card-badge {
+  font-size: $font-size-xs;
+  color: $color-text-light;
+}
+
+// Card Story/Body
+.typo-card-body {
+  color: $color-text-tertiary;
+  line-height: $line-height-comfortable;
+  font-size: $font-size-sm;
+}
+
+// Quote Text
+.typo-quote {
+  font-style: italic;
+  color: $color-text-secondary;
+  font-size: $font-size-xs;
+  line-height: $line-height-relaxed;
+}
+
+// Info Title
+.typo-info-title {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+}
+
+// Form Title
+.typo-form-title {
+  font-size: $font-size-3xl;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+}
+
+// Form Label
+.typo-form-label {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $color-text-secondary;
+}
+
+// Form Input
+.typo-form-input {
+  font-size: $font-size-base;
+  color: $color-text-secondary;
+  font-family: inherit;
+  line-height: $line-height-comfortable;
+}
+
+// Button Text
+.typo-button {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  text-transform: $text-transform-uppercase;
+  letter-spacing: $letter-spacing-tight;
+}
+
+// Body Text (Regular)
+.typo-body {
+  font-size: $font-size-md;
+  line-height: $line-height-loose;
+  color: $color-text-tertiary;
+}
+
+// Body Text (Contact - with more comfortable line height)
+.typo-body-comfortable {
+  font-size: $font-size-md;
+  line-height: $line-height-loose;
+  color: $color-text-tertiary;
+}
+
+// Body Text (Small)
+.typo-body-sm {
+  color: $color-text-tertiary;
+  line-height: $line-height-comfortable;
+}
+
+// Body Text (List Items)
+.typo-list-item {
+  color: $color-text-tertiary;
+  line-height: $line-height-comfortable;
+}
+
+// Gallery Preview Name
+.typo-gallery-name {
+  font-size: clamp($font-size-3xl, 4vw, $font-size-5xl);
+  font-weight: $font-weight-bold;
+  line-height: $line-height-snug;
+  color: $color-text-primary;
+}
+
+// Gallery Preview Text
+.typo-gallery-text {
+  font-size: clamp($font-size-base, 2vw, $font-size-lg);
+  line-height: $line-height-comfortable;
+  color: $color-text-body;
+}
+
+// Header Logo Top
+.typo-header-logo-top {
+  font-family: $font-family-primary;
+  font-weight: $font-weight-bold;
+  font-size: $font-size-2xl;
+  line-height: $line-height-tight;
+  letter-spacing: $letter-spacing-normal;
+  color: $color-text-secondary;
+  text-transform: $text-transform-uppercase;
+  
+  @media (max-width: $breakpoint-md) {
+    font-size: $font-size-lg;
+    letter-spacing: $letter-spacing-normal;
+  }
+}
+
+// Header Logo Bottom
+.typo-header-logo-bottom {
+  font-family: $font-family-primary;
+  font-weight: $font-weight-medium;
+  font-size: 0.8rem;
+  line-height: $line-height-tight;
+  letter-spacing: $letter-spacing-normal;
+  color: $color-text-light;
+  text-transform: $text-transform-uppercase;
+  
+  @media (max-width: $breakpoint-md) {
+    font-size: 0.65rem;
+    letter-spacing: $letter-spacing-normal;
+  }
+}
+
+// Header Menu Link (Desktop)
+.typo-menu-link {
+  font-weight: $font-weight-medium;
+  font-size: $font-size-base;
+  
+  @media (max-width: $breakpoint-lg) {
+    font-size: 0.9rem;
+  }
+  
+  @media (max-width: $breakpoint-md) {
+    font-size: 0.85rem;
+  }
+  
+  @media (max-width: $breakpoint-sm) {
+    font-size: 0.8rem;
+  }
+}
+
+// Header Menu Link (Mobile - Large)
+.typo-menu-link-mobile {
+  font-weight: $font-weight-bold;
+  font-size: $font-size-5xl;
+  letter-spacing: $letter-spacing-tighter;
+  text-transform: $text-transform-uppercase;
+  
+  @media (max-width: $breakpoint-sm) {
+    font-size: $font-size-4xl;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 1.6rem;
+  }
+}
+
+// Header Menu Link CTA (Mobile)
+.typo-menu-link-mobile-cta {
+  font-size: $font-size-6xl;
+  font-weight: $font-weight-black;
+  
+  @media (max-width: $breakpoint-sm) {
+    font-size: 2.2rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 1.8rem;
+  }
+}
+
+// Footer Brand Name
+.typo-footer-brand {
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-bold;
+  text-transform: $text-transform-uppercase;
+  letter-spacing: $letter-spacing-tight;
+  
+  @media (max-width: $breakpoint-sm) {
+    font-size: 1.3rem;
+  }
+}
+
+// Footer Tagline
+.typo-footer-tagline {
+  font-size: 0.95rem;
+  line-height: $line-height-comfortable;
+}
+
+// Footer Section Title
+.typo-footer-section-title {
+  font-size: 1.1rem;
+  font-weight: $font-weight-semibold;
+  text-transform: $text-transform-uppercase;
+  letter-spacing: $letter-spacing-tight;
+}
+
+// Footer Link
+.typo-footer-link {
+  font-size: 0.95rem;
+}
+
+// Footer Contact Item
+.typo-footer-contact {
+  font-size: 0.95rem;
+  line-height: $line-height-relaxed;
+}
+
+// Footer Copyright/Legal
+.typo-footer-legal {
+  font-size: 0.9rem;
+  
+  @media (max-width: $breakpoint-sm) {
+    font-size: 0.85rem;
+  }
+}
+
+// Modal Title
+.typo-modal-title {
+  font-size: $font-size-3xl;
+  font-weight: $font-weight-bold;
+  letter-spacing: $letter-spacing-tighter;
+}
+
+// Modal Section Title
+.typo-modal-section-title {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+}
+
+// Checkbox Label
+.typo-checkbox-label {
+  font-size: 0.95rem;
+  line-height: $line-height-normal;
+}
+
+// Icon Check (List)
+.typo-list-icon {
+  font-weight: bold;
+  font-size: $font-size-md;
+}

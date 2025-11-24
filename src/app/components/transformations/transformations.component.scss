@@ -1,31 +1,20 @@
-@import '../../../styles/variables';
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
 
 .transformations {
   height: 75vh;
   display: flex;
   align-items: center;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  background: linear-gradient(135deg, $color-bg-secondary 0%, $color-bg-tertiary 100%);
   padding: 2rem 0;
   overflow: hidden;
 
   &__container {
     width: 100%;
     height: 100%;
-    padding: 0 $container-padding-mobile;
     display: flex;
     flex-direction: column;
-    
-    @media (min-width: $breakpoint-md) {
-      padding: 0 $container-padding-tablet;
-    }
-
-    @media (min-width: $breakpoint-lg) {
-      padding: 0 $container-padding-desktop;
-    }
-
-    @media (min-width: $breakpoint-xl) {
-      padding: 0 $container-padding-wide;
-    }
+    @include container-padding;
   }
 
   &__header {
@@ -35,19 +24,11 @@
   }
 
   &__title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: #1a1a1a;
     margin-bottom: 0.5rem;
-    
-    @media (max-width: $breakpoint-md) {
-      font-size: 2rem;
-    }
   }
 
   &__subtitle {
-    font-size: 1.125rem;
-    color: #666;
+    // Typography handled by typo-section-subtitle
   }
 
   &__slider-wrapper {
@@ -117,7 +98,7 @@
         opacity: 1;
         filter: grayscale(0%);
         transform: scale(1.02);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        box-shadow: 0 20px 40px $color-shadow-dark;
         
         @media (min-width: $breakpoint-lg) {
           transform: scale(1.05);
@@ -127,10 +108,10 @@
   }
 
   &__card {
-    background: white;
+    background: $color-bg-primary;
     border-radius: 16px;
     padding: 1.5rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 12px $color-shadow-medium;
     transition: all 0.3s ease;
     height: 100%;
     display: flex;
@@ -149,40 +130,21 @@
     align-items: center;
     margin-bottom: 1rem;
     padding-bottom: 1rem;
-    border-bottom: 2px solid #f0f0f0;
+    border-bottom: 2px solid $color-bg-light;
   }
 
   &__card-name {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #1a1a1a;
     margin: 0;
-    
-    @media (max-width: $breakpoint-md) {
-      font-size: 1.25rem;
-    }
   }
 
   &__card-age {
-    font-size: 0.875rem;
-    color: #666;
-    background: #f8f9fa;
+    background: $color-bg-secondary;
     padding: 0.25rem 0.75rem;
     border-radius: 12px;
   }
 
   &__card-description {
-    font-size: 1.125rem;
-    color: #2c5aa0;
     margin-bottom: 1rem;
-    
-    strong {
-      font-weight: 600;
-    }
-    
-    @media (max-width: $breakpoint-md) {
-      font-size: 1rem;
-    }
   }
 
   &__card-story {
@@ -190,24 +152,18 @@
     margin-bottom: 1.5rem;
     overflow-y: auto;
     min-height: 0;
-    
-    p {
-      color: #4a4a4a;
-      line-height: 1.6;
-      font-size: 0.938rem;
-    }
   }
 
   &__card-quote {
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-    border-left: 4px solid #2c5aa0;
+    background: linear-gradient(135deg, $color-bg-secondary 0%, $color-bg-tertiary 100%);
+    border-left: 4px solid $color-primary;
     padding: 1rem;
     border-radius: 8px;
     position: relative;
   }
 
   &__quote-icon {
-    color: #2c5aa0;
+    color: $color-primary;
     opacity: 0.3;
     position: absolute;
     top: 0.5rem;
@@ -215,16 +171,12 @@
   }
 
   &__quote-text {
-    font-style: italic;
-    color: #333;
     margin: 0;
-    font-size: 0.875rem;
-    line-height: 1.5;
   }
 
   &__nav-button {
-    background: white;
-    border: 2px solid #e0e0e0;
+    background: $color-bg-primary;
+    border: 2px solid $color-border-light;
     border-radius: 50%;
     width: 48px;
     height: 48px;
@@ -233,14 +185,14 @@
     justify-content: center;
     cursor: pointer;
     transition: all 0.3s ease;
-    color: #333;
+    color: $color-text-secondary;
     flex-shrink: 0;
     z-index: 10;
     
     &:hover {
-      background: #2c5aa0;
-      border-color: #2c5aa0;
-      color: white;
+      background: $color-primary;
+      border-color: $color-primary;
+      color: $color-text-white;
     }
     
     @media (max-width: $breakpoint-md) {
@@ -266,19 +218,19 @@
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background: #d0d0d0;
+    background: $color-border-medium;
     border: none;
     cursor: pointer;
     transition: all 0.3s ease;
     padding: 0;
     
     &:hover {
-      background: #2c5aa0;
+      background: $color-primary;
       transform: scale(1.2);
     }
     
     &--active {
-      background: #2c5aa0;
+      background: $color-primary;
       width: 30px;
       border-radius: 5px;
     }

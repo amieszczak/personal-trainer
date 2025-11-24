@@ -1,10 +1,11 @@
-@import '../../../styles/variables';
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
 
 .contact {
   min-height: 80vh;
   display: flex;
   align-items: center;
-  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  background: linear-gradient(135deg, $color-bg-primary 0%, $color-bg-secondary 100%);
   padding: 4rem 0;
 
   @media (max-width: $breakpoint-md) {
@@ -15,19 +16,7 @@
     width: 100%;
     max-width: $max-width-content;
     margin: 0 auto;
-    padding: 0 $container-padding-mobile;
-    
-    @media (min-width: $breakpoint-md) {
-      padding: 0 $container-padding-tablet;
-    }
-
-    @media (min-width: $breakpoint-lg) {
-      padding: 0 $container-padding-desktop;
-    }
-
-    @media (min-width: $breakpoint-xl) {
-      padding: 0 $container-padding-wide;
-    }
+    @include container-padding;
   }
 
   &__content {
@@ -49,34 +38,21 @@
   }
 
   &__title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: #1a1a1a;
     margin: 0 0 1rem 0;
-    
-    @media (max-width: $breakpoint-md) {
-      font-size: 2rem;
-    }
   }
 
   &__text {
-    font-size: 1.125rem;
-    line-height: 1.7;
-    color: #4a4a4a;
     margin: 0;
   }
 
   &__info {
-    background: #f8f9fa;
+    background: $color-bg-secondary;
     padding: 1.5rem;
     border-radius: 12px;
-    border-left: 4px solid #2c5aa0;
+    border-left: 4px solid $color-primary;
   }
 
   &__info-title {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: #1a1a1a;
     margin: 0 0 1rem 0;
   }
 
@@ -91,31 +67,24 @@
     li {
       position: relative;
       padding-left: 1.75rem;
-      color: #4a4a4a;
-      line-height: 1.6;
 
       &::before {
         content: '✓';
         position: absolute;
         left: 0;
-        color: #2c5aa0;
-        font-weight: bold;
-        font-size: 1.125rem;
+        color: $color-primary;
       }
     }
   }
 
   &__details {
     padding: 1.5rem;
-    background: white;
+    background: $color-bg-primary;
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 12px $color-shadow-medium;
   }
 
   &__details-title {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: #1a1a1a;
     margin: 0 0 1.25rem 0;
   }
 
@@ -124,23 +93,23 @@
     align-items: center;
     gap: 0.875rem;
     padding: 0.75rem 0;
-    color: #4a4a4a;
+    color: $color-text-tertiary;
 
     &:not(:last-child) {
-      border-bottom: 1px solid #f0f0f0;
+      border-bottom: 1px solid $color-bg-light;
     }
   }
 
   &__icon {
-    color: #2c5aa0;
+    color: $color-primary;
     flex-shrink: 0;
   }
 
   &__form-wrapper {
-    background: white;
+    background: $color-bg-primary;
     border-radius: 16px;
     padding: 2rem;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 24px $color-shadow-base;
 
     @media (max-width: $breakpoint-md) {
       padding: 1.5rem;
@@ -154,9 +123,6 @@
   }
 
   &__form-title {
-    font-size: 1.75rem;
-    font-weight: 600;
-    color: #1a1a1a;
     margin: 0 0 0.5rem 0;
   }
 
@@ -167,57 +133,49 @@
   }
 
   &__label {
-    font-size: 0.938rem;
-    font-weight: 500;
-    color: #333;
+    // Typography handled by typo-form-label class
   }
 
   &__input,
   &__textarea {
     padding: 0.875rem 1rem;
-    border: 2px solid #e0e0e0;
+    border: 2px solid $color-border-light;
     border-radius: 8px;
-    font-size: 1rem;
-    color: #333;
     transition: all 0.3s ease;
-    font-family: inherit;
 
     &::placeholder {
-      color: #999;
+      color: $color-text-lighter;
     }
 
     &:focus {
       outline: none;
-      border-color: #2c5aa0;
-      box-shadow: 0 0 0 3px rgba(44, 90, 160, 0.1);
+      border-color: $color-primary;
+      box-shadow: 0 0 0 3px $color-primary-shadow-light;
     }
 
     &:hover {
-      border-color: #c0c0c0;
+      border-color: $color-border-hover;
     }
   }
 
   &__textarea {
     resize: vertical;
     min-height: 120px;
-    line-height: 1.6;
   }
 
   &__submit {
-    background: linear-gradient(135deg, #2c5aa0 0%, #1e3a70 100%);
-    color: white;
+    background: linear-gradient(135deg, $color-primary 0%, $color-primary-dark 100%);
+    color: $color-text-white;
     padding: 1rem 2rem;
     border: none;
     border-radius: 8px;
-    font-size: 1.125rem;
-    font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
     margin-top: 0.5rem;
 
     &:hover:not(:disabled) {
       transform: translateY(-2px);
-      box-shadow: 0 8px 16px rgba(44, 90, 160, 0.3);
+      box-shadow: 0 8px 16px $color-primary-shadow-medium;
     }
 
     &:active:not(:disabled) {

@@ -3,15 +3,15 @@
     <div class="contact__content">
       <!-- Description Section -->
       <div class="contact__description">
-        <h2 class="contact__title">Skontaktuj się ze mną</h2>
-        <p class="contact__text">
+        <h2 class="contact__title typo-section-title-sm">Skontaktuj się ze mną</h2>
+        <p class="contact__text typo-body-comfortable">
           Jestem tutaj, aby pomóc Ci osiągnąć Twoje cele fitness. Niezależnie od tego, czy jesteś początkującym, 
           czy zaawansowanym sportowcem, stworzę dla Ciebie spersonalizowany plan treningowy.
         </p>
         
         <div class="contact__info">
-          <h3 class="contact__info-title">Co oferuję?</h3>
-          <ul class="contact__info-list">
+          <h3 class="contact__info-title typo-info-title">Co oferuję?</h3>
+          <ul class="contact__info-list typo-list-item">
             <li>Indywidualne plany treningowe dostosowane do Twoich celów</li>
             <li>Konsultacje żywieniowe i dietetyczne</li>
             <li>Wsparcie i motywacja na każdym etapie</li>
@@ -21,7 +21,7 @@
         </div>
 
         <div class="contact__details">
-          <h3 class="contact__details-title">Informacje kontaktowe</h3>
+          <h3 class="contact__details-title typo-info-title">Informacje kontaktowe</h3>
           <div class="contact__details-item">
             <svg class="contact__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M3 8L10.89 13.26C11.2187 13.4793 11.6049 13.5963 12 13.5963C12.3951 13.5963 12.7813 13.4793 13.11 13.26L21 8M5 19H19C19.5304 19 20.0391 18.7893 20.4142 18.4142C20.7893 18.0391 21 17.5304 21 17V7C21 6.46957 20.7893 5.96086 20.4142 5.58579C20.0391 5.21071 19.5304 5 19 5H5C4.46957 5 3.96086 5.21071 3.58579 5.58579C3.21071 5.96086 3 6.46957 3 7V17C3 17.5304 3.21071 18.0391 3.58579 18.4142C3.96086 18.7893 4.46957 19 5 19Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -47,61 +47,61 @@
       <!-- Contact Form Section -->
       <div class="contact__form-wrapper">
         <form class="contact__form" (ngSubmit)="onSubmit()" #contactForm="ngForm">
-          <h3 class="contact__form-title">Wyślij wiadomość</h3>
+          <h3 class="contact__form-title typo-form-title">Wyślij wiadomość</h3>
           
           <div class="contact__form-group">
-            <label for="name" class="contact__label">Imię i nazwisko *</label>
+            <label for="name" class="contact__label typo-form-label">Imię i nazwisko *</label>
             <input 
               type="text" 
               id="name" 
               name="name" 
-              class="contact__input"
+              class="contact__input typo-form-input"
               [(ngModel)]="formData.name"
               required
               placeholder="Jan Kowalski">
           </div>
 
           <div class="contact__form-group">
-            <label for="email" class="contact__label">Email *</label>
+            <label for="email" class="contact__label typo-form-label">Email *</label>
             <input 
               type="email" 
               id="email" 
               name="email" 
-              class="contact__input"
+              class="contact__input typo-form-input"
               [(ngModel)]="formData.email"
               required
               placeholder="jan.kowalski&#64;example.com">
           </div>
 
           <div class="contact__form-group">
-            <label for="phone" class="contact__label">Telefon</label>
+            <label for="phone" class="contact__label typo-form-label">Telefon</label>
             <input 
               type="tel" 
               id="phone" 
               name="phone" 
-              class="contact__input"
+              class="contact__input typo-form-input"
               [(ngModel)]="formData.phone"
               placeholder="+48 123 456 789">
           </div>
 
           <div class="contact__form-group">
-            <label for="subject" class="contact__label">Temat *</label>
+            <label for="subject" class="contact__label typo-form-label">Temat *</label>
             <input 
               type="text" 
               id="subject" 
               name="subject" 
-              class="contact__input"
+              class="contact__input typo-form-input"
               [(ngModel)]="formData.subject"
               required
               placeholder="W czym mogę Ci pomóc?">
           </div>
 
           <div class="contact__form-group">
-            <label for="message" class="contact__label">Wiadomość *</label>
+            <label for="message" class="contact__label typo-form-label">Wiadomość *</label>
             <textarea 
               id="message" 
               name="message" 
-              class="contact__textarea"
+              class="contact__textarea typo-form-input"
               [(ngModel)]="formData.message"
               required
               rows="5"
@@ -110,7 +110,7 @@
 
           <button 
             type="submit" 
-            class="contact__submit"
+            class="contact__submit typo-button"
             [disabled]="!contactForm.form.valid">
             Wyślij wiadomość
           </button>

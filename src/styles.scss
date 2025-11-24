@@ -1,40 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
 
-// Import variables
+// Import variables and typography - MUST come before @import
 @use 'styles/variables' as *;
+@use 'styles/typography';
 
 // Import Roboto font
 @import '@fontsource/roboto/300.css'; // Light
 @import '@fontsource/roboto/400.css'; // Regular
 @import '@fontsource/roboto/500.css'; // Medium
 @import '@fontsource/roboto/700.css'; // Bold
-
-// Global styles
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  font-size: 16px;
-}
-
-body {
-  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  line-height: 1.6;
-  color: #333;
-}
+@import '@fontsource/roboto/900.css'; // Black
 
 // Material Dialog backdrop and overlay z-index fixes
 // Booking modal backdrop - base layer
 .cdk-overlay-backdrop.booking-modal-backdrop {
   z-index: 1000 !important;
-  background-color: rgba(0, 0, 0, 0.5) !important;
+  background-color: $color-shadow-backdrop !important;
 }
 
 // All backdrops
@@ -84,8 +65,8 @@ body {
 // Ensure select and datepicker panels are above everything
 .mat-mdc-select-panel {
   z-index: 1500 !important;
-  background: #ffffff !important;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3) !important;
+  background: $color-bg-primary !important;
+  box-shadow: 0 5px 15px $color-shadow-darkest !important;
 }
 
 .mat-datepicker-popup {
@@ -94,8 +75,8 @@ body {
 
 .mat-datepicker-content {
   z-index: 1500 !important;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3) !important;
-  background: #ffffff !important;
+  box-shadow: 0 5px 15px $color-shadow-darkest !important;
+  background: $color-bg-primary !important;
 }
 
 // Ensure calendar is fully interactive
@@ -143,7 +124,7 @@ body {
 // Debug: Make calendar highly visible
 .mat-datepicker-popup {
   .mat-calendar {
-    background: white !important;
+    background: $color-bg-primary !important;
   }
 }
 
@@ -187,7 +168,7 @@ body {
   visibility: visible !important;
   display: block !important;
   opacity: 1 !important;
-  background: white !important;
+  background: $color-bg-primary !important;
   pointer-events: auto !important;
 }
 
@@ -195,7 +176,7 @@ body {
   visibility: visible !important;
   display: block !important;
   opacity: 1 !important;
-  background: white !important;
+  background: $color-bg-primary !important;
   pointer-events: auto !important;
 }
 
@@ -206,8 +187,8 @@ body {
 
 // Make datepicker content container highly visible and scrollable
 .mat-datepicker-content-container {
-  background: white !important;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
+  background: $color-bg-primary !important;
+  box-shadow: 0 8px 24px $color-shadow-heavy !important;
   border-radius: 8px !important;
   overflow: auto !important;
   max-height: 400px !important;
@@ -228,8 +209,8 @@ body {
   
   // Header styling - sticky so it stays visible while scrolling
   .mat-calendar-header {
-    background: linear-gradient(135deg, #ff6b6b 0%, #ff5252 100%);
-    color: white;
+    background: linear-gradient(135deg, $color-primary 0%, $color-accent-hover 100%);
+    color: $color-text-white;
     padding: 0.5rem;
     border-radius: 8px 8px 0 0;
     pointer-events: auto !important;
@@ -241,7 +222,7 @@ body {
   .mat-calendar-period-button,
   .mat-calendar-previous-button,
   .mat-calendar-next-button {
-    color: white !important;
+    color: $color-text-white !important;
     pointer-events: auto !important;
     cursor: pointer !important;
   }
@@ -259,14 +240,14 @@ body {
   
   // Selected date styling
   .mat-calendar-body-selected {
-    background-color: #ff6b6b !important;
-    color: white !important;
+    background-color: $color-primary !important;
+    color: $color-text-white !important;
     pointer-events: auto !important;
   }
   
   // Today's date
   .mat-calendar-body-today:not(.mat-calendar-body-selected) {
-    border-color: #ff6b6b !important;
+    border-color: $color-primary !important;
   }
   
   // Hover effect - also add active state
@@ -274,11 +255,11 @@ body {
     pointer-events: auto !important;
     
     &:hover > .mat-calendar-body-cell-content:not(.mat-calendar-body-selected) {
-      background-color: rgba(255, 107, 107, 0.2) !important;
+      background-color: $color-primary-shadow-light !important;
     }
     
     &:active > .mat-calendar-body-cell-content:not(.mat-calendar-body-selected) {
-      background-color: rgba(255, 107, 107, 0.3) !important;
+      background-color: $color-primary-shadow-medium !important;
     }
   }
 }
