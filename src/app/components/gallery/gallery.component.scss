@@ -135,7 +135,7 @@
         transform: translateY(-50%);
         width: 100vw;
         height: calc(100% + 4rem);
-        background: linear-gradient(135deg, $color-bg-secondary 0%, $color-bg-tertiary 100%);
+        @include bg-gradient-subtle;
         z-index: -1;
       }
     }
@@ -187,29 +187,25 @@
     height: 100%;
     overflow: hidden;
     cursor: pointer;
-    transition: all 0.3s ease;
+    @include transition;
     border: 3px solid transparent;
-    border-radius: 8px;
+    border-radius: $border-radius-base;
     background-color: $color-bg-secondary;
     
     &:hover {
       transform: scale(1.05);
-      box-shadow: 0 6px 16px $color-shadow-darker;
+      box-shadow: $shadow-lg;
     }
     
     &--active {
       border-color: $color-primary;
-      box-shadow: 0 6px 16px $color-primary-shadow-dark;
+      box-shadow: $shadow-primary-md;
       transform: scale(1.03);
     }
   }
 
   &__grid-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    display: block;
+    @include image-full-cover;
   }
 
   &__slider-wrapper {
@@ -249,7 +245,7 @@
     flex: 0 0 auto;
     padding: 0 1rem;
     box-sizing: border-box;
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    @include transition-smooth;
     
     @media (min-width: $breakpoint-lg) {
       padding: 0 1.5rem;
@@ -262,7 +258,7 @@
     .gallery__tile {
       opacity: 0.5;
       filter: grayscale(30%);
-      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      @include transition-smooth;
     }
     
     &--active {
@@ -270,7 +266,7 @@
         opacity: 1;
         filter: grayscale(0%);
         transform: scale(1.05);
-        box-shadow: 0 8px 20px $color-primary-shadow-dark;
+        box-shadow: $shadow-primary-xl;
       }
     }
   }
@@ -280,37 +276,33 @@
     height: 200px;
     overflow: hidden;
     cursor: pointer;
-    transition: all 0.3s ease;
+    @include transition;
     border: 4px solid transparent;
-    border-radius: 12px;
+    border-radius: $border-radius-md;
     background-color: $color-bg-secondary;
     flex-shrink: 0;
     
     &:hover {
       transform: scale(1.05);
-      box-shadow: 0 8px 20px $color-shadow-darker;
+      box-shadow: $shadow-xl;
     }
   }
   
   &__tile-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    display: block;
+    @include image-full-cover;
   }
 
   &__nav-button {
     background: $color-bg-primary;
     border: 2px solid $color-border-light;
-    border-radius: 50%;
+    border-radius: $border-radius-full;
     width: 48px;
     height: 48px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: all 0.3s ease;
+    @include transition;
     color: $color-text-secondary;
     flex-shrink: 0;
     z-index: 10;

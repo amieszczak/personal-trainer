@@ -58,14 +58,12 @@
   }
   
   &__item {
-    background-color: $color-bg-primary;
-    border-radius: 8px;
+    @include card-hover;
     overflow: hidden;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 4px $color-shadow-light;
+    box-shadow: $shadow-sm;
     
     &:hover {
-      box-shadow: 0 4px 8px $color-shadow-base;
+      box-shadow: $shadow-base;
     }
     
     &-header {
@@ -74,7 +72,7 @@
       justify-content: space-between;
       padding: 1.5rem 2rem;
       cursor: pointer;
-      transition: all 0.3s ease;
+      @include transition;
       
       @media (max-width: $breakpoint-sm) {
         padding: 1.25rem 1.5rem;
@@ -92,7 +90,7 @@
     
     &-title {
       margin: 0;
-      transition: color 0.3s ease;
+      @include transition(color);
       flex: 1;
     }
     
@@ -100,7 +98,7 @@
       flex-shrink: 0;
       margin-left: 1rem;
       color: $color-primary;
-      transition: transform 0.3s ease;
+      @include transition(transform);
       
       &--active {
         transform: rotate(45deg);
@@ -110,7 +108,7 @@
     &-description {
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.4s ease, padding 0.4s ease;
+      transition: max-height $transition-slow, padding $transition-slow;
       
       &--expanded {
         max-height: 500px;

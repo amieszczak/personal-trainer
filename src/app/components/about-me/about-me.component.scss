@@ -55,7 +55,7 @@
     flex: 1;
     position: relative;
     overflow: hidden;
-    border-radius: 8px;
+    border-radius: $border-radius-base;
     min-height: 600px;
 
     &--mobile {
@@ -80,7 +80,7 @@
         width: 50vw;
         height: 50vw;
         min-height: unset;
-        border-radius: 8px;
+        border-radius: $border-radius-base;
       }
 
       &--desktop {
@@ -92,9 +92,7 @@
   &__image {
     width: 150%;
     height: 150%;
-    object-fit: cover;
-    object-position: center top;
-    display: block;
+    @include image-cover(center top);
     transform: translateX(-25%);
   }
   

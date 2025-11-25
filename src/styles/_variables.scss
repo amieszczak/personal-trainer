@@ -98,6 +98,38 @@ $container-padding-wide: 6rem;        // Wide screens (1280px+)
 $max-width-content: 1200px;
 
 // ========================================
+// VISUAL DESIGN TOKENS
+// ========================================
+
+// Border Radius
+$border-radius-sm: 2px;      // Small (underlines, progress bars)
+$border-radius-base: 8px;    // Standard (cards, buttons, inputs)
+$border-radius-md: 12px;     // Medium (larger cards)
+$border-radius-lg: 16px;     // Large (prominent cards)
+$border-radius-xl: 20px;     // Extra large
+$border-radius-full: 50%;    // Circle (buttons, avatars)
+
+// Transitions
+$transition-fast: 0.2s ease;                                    // Fast transitions
+$transition-base: 0.3s ease;                                    // Standard transitions
+$transition-slow: 0.4s ease;                                    // Slower transitions
+$transition-smooth: 0.5s cubic-bezier(0.4, 0, 0.2, 1);        // Smooth slider animations
+$transition-bouncy: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55); // Bouncy animations
+
+// Common Box Shadows
+$shadow-xs: 0 1px 2px $color-shadow-light;                     // Extra small shadow
+$shadow-sm: 0 2px 4px $color-shadow-light;                     // Small shadow
+$shadow-base: 0 2px 8px $color-shadow-base;                    // Base shadow
+$shadow-md: 0 4px 12px $color-shadow-medium;                   // Medium shadow
+$shadow-lg: 0 6px 16px $color-shadow-darker;                   // Large shadow
+$shadow-xl: 0 8px 20px $color-shadow-darker;                   // Extra large shadow
+$shadow-2xl: 0 20px 40px $color-shadow-dark;                   // 2X large shadow
+$shadow-primary-sm: 0 4px 12px $color-primary-shadow-medium;   // Primary shadow small
+$shadow-primary-md: 0 6px 16px $color-primary-shadow-dark;     // Primary shadow medium
+$shadow-primary-lg: 0 8px 16px $color-primary-shadow-medium;   // Primary shadow large
+$shadow-primary-xl: 0 8px 20px $color-primary-shadow-dark;     // Primary shadow XL
+
+// ========================================
 // TYPOGRAPHY
 // ========================================
 

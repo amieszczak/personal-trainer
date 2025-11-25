@@ -2,7 +2,7 @@
 @use '../../../styles/mixins' as *;
 
 .footer {
-  background: linear-gradient(135deg, $color-footer-bg-start 0%, $color-footer-bg-end 100%);
+  @include bg-gradient-footer;
   color: $color-footer-text;
   padding: 3rem 0 0;
   margin-top: 4rem;
@@ -139,7 +139,7 @@
   &__link {
     color: $color-footer-text-light;
     text-decoration: none;
-    transition: color 0.3s ease, padding-left 0.3s ease;
+    transition: color $transition-base, padding-left $transition-base;
     display: inline-block;
     position: relative;
 
@@ -153,7 +153,7 @@
       position: absolute;
       left: -1rem;
       opacity: 0;
-      transition: opacity 0.3s ease, left 0.3s ease;
+      transition: opacity $transition-base, left $transition-base;
     }
 
     &:hover::before {
@@ -169,15 +169,10 @@
   }
 
   &__social-link {
-    width: 45px;
-    height: 45px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include button-circle(45px);
     background-color: $color-footer-divider;
-    border-radius: 50%;
     color: $color-footer-text;
-    transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease;
+    transition: background-color $transition-base, transform $transition-base, color $transition-base;
 
     &:hover {
       background-color: $color-primary;
@@ -229,7 +224,7 @@
   &__legal-link {
     color: $color-footer-text-lightest;
     text-decoration: none;
-    transition: color 0.3s ease;
+    @include transition(color);
 
     &:hover {
       color: $color-primary;

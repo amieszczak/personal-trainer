@@ -5,7 +5,7 @@
   height: 75vh;
   display: flex;
   align-items: center;
-  background: linear-gradient(135deg, $color-bg-secondary 0%, $color-bg-tertiary 100%);
+  @include bg-gradient-subtle;
   padding: 2rem 0;
   overflow: hidden;
 
@@ -84,13 +84,13 @@
   }
 
   &__slide {
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    @include transition-smooth;
     box-sizing: border-box;
     
     .transformations__card {
       opacity: 0.4;
       filter: grayscale(20%);
-      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      @include transition-smooth;
     }
     
     &--active {
@@ -98,7 +98,7 @@
         opacity: 1;
         filter: grayscale(0%);
         transform: scale(1.02);
-        box-shadow: 0 20px 40px $color-shadow-dark;
+        box-shadow: $shadow-2xl;
         
         @media (min-width: $breakpoint-lg) {
           transform: scale(1.05);
@@ -109,10 +109,10 @@
 
   &__card {
     background: $color-bg-primary;
-    border-radius: 16px;
+    border-radius: $border-radius-lg;
     padding: 1.5rem;
-    box-shadow: 0 4px 12px $color-shadow-medium;
-    transition: all 0.3s ease;
+    box-shadow: $shadow-md;
+    @include transition;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -140,7 +140,7 @@
   &__card-age {
     background: $color-bg-secondary;
     padding: 0.25rem 0.75rem;
-    border-radius: 12px;
+    border-radius: $border-radius-md;
   }
 
   &__card-description {
@@ -155,10 +155,10 @@
   }
 
   &__card-quote {
-    background: linear-gradient(135deg, $color-bg-secondary 0%, $color-bg-tertiary 100%);
+    @include bg-gradient-subtle;
     border-left: 4px solid $color-primary;
     padding: 1rem;
-    border-radius: 8px;
+    border-radius: $border-radius-base;
     position: relative;
   }
 
@@ -177,14 +177,14 @@
   &__nav-button {
     background: $color-bg-primary;
     border: 2px solid $color-border-light;
-    border-radius: 50%;
+    border-radius: $border-radius-full;
     width: 48px;
     height: 48px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: all 0.3s ease;
+    @include transition;
     color: $color-text-secondary;
     flex-shrink: 0;
     z-index: 10;
@@ -217,11 +217,11 @@
   &__dot {
     width: 10px;
     height: 10px;
-    border-radius: 50%;
+    border-radius: $border-radius-full;
     background: $color-border-medium;
     border: none;
     cursor: pointer;
-    transition: all 0.3s ease;
+    @include transition;
     padding: 0;
     
     &:hover {
@@ -232,7 +232,7 @@
     &--active {
       background: $color-primary;
       width: 30px;
-      border-radius: 5px;
+      border-radius: $border-radius-sm;
     }
   }
 }

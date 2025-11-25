@@ -7,7 +7,7 @@
   display: flex;
   flex-direction: column;
   background: $color-bg-primary;
-  border-radius: 12px;
+      border-radius: $border-radius-md;
   overflow: hidden; // Restore hidden to allow proper scrolling
   position: relative;
   z-index: 1;
@@ -17,9 +17,9 @@
     justify-content: space-between;
     align-items: center;
     padding: 1.5rem 2rem;
-    background: linear-gradient(135deg, $color-primary 0%, $color-accent-hover 100%);
+    @include bg-gradient-primary;
     color: $color-text-white;
-    box-shadow: 0 2px 8px $color-shadow-base;
+    box-shadow: $shadow-base;
   }
 
   &__title {
@@ -68,7 +68,7 @@
     &--agreements {
       background-color: $color-bg-secondary;
       padding: 1.5rem;
-      border-radius: 8px;
+      border-radius: $border-radius-base;
       border-left: 4px solid $color-primary;
     }
   }
@@ -85,8 +85,8 @@
       left: 0;
       width: 50px;
       height: 3px;
-      background: linear-gradient(90deg, $color-primary 0%, $color-accent-hover 100%);
-      border-radius: 2px;
+      @include bg-gradient-primary;
+      border-radius: $border-radius-sm;
     }
   }
 
@@ -128,7 +128,7 @@
       .mat-mdc-input-element::placeholder {
         color: transparent !important;
         opacity: 0 !important;
-        transition: color 0.2s ease, opacity 0.2s ease;
+        transition: color $transition-fast, opacity $transition-fast;
       }
 
       // Show placeholder when input is focused
@@ -246,7 +246,7 @@
         textarea.mat-mdc-input-element::placeholder {
           color: transparent !important;
           opacity: 0 !important;
-          transition: color 0.2s ease, opacity 0.2s ease;
+          transition: color $transition-fast, opacity $transition-fast;
         }
         
         // Show placeholder when textarea is focused
@@ -287,7 +287,7 @@
   &__link {
     color: $color-primary;
     text-decoration: none;
-    transition: color 0.2s ease;
+    @include transition(color);
 
     &:hover {
       color: $color-accent-hover;
@@ -320,8 +320,8 @@
   &__button {
     min-width: 140px;
     padding: 0.75rem 1.5rem;
-    border-radius: 8px;
-    transition: all 0.3s ease;
+    border-radius: $border-radius-base;
+    @include transition;
 
     @media (max-width: $breakpoint-sm) {
       width: 100%;
@@ -338,13 +338,13 @@
     }
 
     &--submit {
-      background: linear-gradient(135deg, $color-primary 0%, $color-accent-hover 100%);
+      @include bg-gradient-primary;
       color: $color-text-white;
-      box-shadow: 0 4px 12px $color-primary-shadow-medium;
+      box-shadow: $shadow-primary-sm;
 
       &:hover:not([disabled]) {
         background: linear-gradient(135deg, $color-accent-hover 0%, $color-primary-dark 100%);
-        box-shadow: 0 6px 16px $color-primary-shadow-dark;
+        box-shadow: $shadow-primary-md;
         transform: translateY(-2px);
       }
 
@@ -356,9 +356,9 @@
       }
     }
 
-    ::ng-deep {
+      ::ng-deep {
       .mat-mdc-button-persistent-ripple {
-        border-radius: 8px;
+        border-radius: $border-radius-base;
       }
     }
   }
@@ -373,7 +373,7 @@
   }
 
   .mat-mdc-dialog-surface {
-    border-radius: 12px;
+      border-radius: $border-radius-md;
     overflow: hidden !important;
   }
 }
@@ -386,12 +386,12 @@
 
   &::-webkit-scrollbar-track {
     background: $color-scrollbar-track;
-    border-radius: 4px;
+      border-radius: $border-radius-sm;
   }
 
   &::-webkit-scrollbar-thumb {
     background: $color-scrollbar-thumb;
-    border-radius: 4px;
+      border-radius: $border-radius-sm;
     
     &:hover {
       background: $color-scrollbar-thumb-hover;

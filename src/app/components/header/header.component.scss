@@ -8,8 +8,8 @@
   right: 0;
   z-index: 1000;
   background-color: $color-bg-primary;
-  box-shadow: 0 2px 8px $color-shadow-base;
-  transition: box-shadow 0.3s ease;
+  box-shadow: $shadow-base;
+  @include transition(box-shadow);
 
   &__container {
     display: flex;
@@ -33,7 +33,7 @@
     &-img {
       height: 50px;
       width: auto;
-      transition: transform 0.3s ease;
+      @include transition(transform);
 
       &:hover {
         transform: scale(1.05);
@@ -50,8 +50,8 @@
       flex-direction: column;
       justify-content: space-between;
       height: 50px;
-      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-                  opacity 0.4s ease;
+      transition: transform $transition-smooth,
+                  opacity $transition-slow;
       transform: translateX(0) scale(1);
       transform-origin: left center;
       opacity: 1;
@@ -88,7 +88,7 @@
       left: 0;
       width: 100%;
       height: 100vh;
-      background: linear-gradient(135deg, $color-primary-overlay 0%, $color-primary-overlay-dark 100%);
+      @include bg-gradient-overlay;
       z-index: 999;
       display: flex;
       align-items: center;
@@ -134,8 +134,8 @@
           width: 20px;
           height: 4px;
           background-color: $color-text-white;
-          border-radius: 2px;
-          transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+          border-radius: $border-radius-sm;
+          transition: transform $transition-bouncy;
           transform-origin: right;
         }
 
@@ -180,7 +180,7 @@
     cursor: pointer;
     padding: 0;
     z-index: 1001;
-    transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transition: transform $transition-bouncy;
 
     &:hover {
       transform: scale(1.1);
@@ -194,8 +194,8 @@
       width: 100%;
       height: 4px;
       background-color: $color-text-secondary;
-      border-radius: 2px;
-      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      border-radius: $border-radius-sm;
+      transition: all $transition-bouncy;
       transform-origin: center;
       position: relative;
 
@@ -207,8 +207,8 @@
         background-color: $color-primary;
         left: 0;
         top: 0;
-        border-radius: 2px;
-        transition: width 0.3s ease;
+        border-radius: $border-radius-sm;
+        transition: width $transition-base;
       }
     }
 
@@ -259,7 +259,7 @@
       color: $color-text-secondary;
       padding: 0.5rem 0;
       position: relative;
-      transition: color 0.3s ease;
+      @include transition(color);
 
       &::after {
         content: '';
@@ -269,7 +269,7 @@
         width: 0;
         height: 2px;
         background-color: $color-primary;
-        transition: width 0.3s ease;
+        transition: width $transition-base;
       }
 
       &:hover {
@@ -284,8 +284,8 @@
         background-color: $color-primary;
         color: $color-text-white;
         padding: 0.75rem 1.5rem;
-        border-radius: 25px;
-        transition: background-color 0.3s ease, transform 0.3s ease;
+        border-radius: $border-radius-xl;
+        transition: background-color $transition-base, transform $transition-base;
 
         &::after {
           display: none;

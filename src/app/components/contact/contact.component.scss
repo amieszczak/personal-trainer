@@ -5,7 +5,7 @@
   min-height: 80vh;
   display: flex;
   align-items: center;
-  background: linear-gradient(135deg, $color-bg-primary 0%, $color-bg-secondary 100%);
+  @include section-gradient;
   padding: 4rem 0;
 
   @media (max-width: $breakpoint-md) {
@@ -48,7 +48,7 @@
   &__info {
     background: $color-bg-secondary;
     padding: 1.5rem;
-    border-radius: 12px;
+    border-radius: $border-radius-md;
     border-left: 4px solid $color-primary;
   }
 
@@ -80,8 +80,8 @@
   &__details {
     padding: 1.5rem;
     background: $color-bg-primary;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px $color-shadow-medium;
+    border-radius: $border-radius-md;
+    box-shadow: $shadow-md;
   }
 
   &__details-title {
@@ -106,10 +106,8 @@
   }
 
   &__form-wrapper {
-    background: $color-bg-primary;
-    border-radius: 16px;
+    @include card-large;
     padding: 2rem;
-    box-shadow: 0 8px 24px $color-shadow-base;
 
     @media (max-width: $breakpoint-md) {
       padding: 1.5rem;
@@ -140,8 +138,8 @@
   &__textarea {
     padding: 0.875rem 1rem;
     border: 2px solid $color-border-light;
-    border-radius: 8px;
-    transition: all 0.3s ease;
+    border-radius: $border-radius-base;
+    @include transition;
 
     &::placeholder {
       color: $color-text-lighter;
@@ -164,27 +162,8 @@
   }
 
   &__submit {
-    background: linear-gradient(135deg, $color-primary 0%, $color-primary-dark 100%);
-    color: $color-text-white;
+    @include button-primary-gradient;
     padding: 1rem 2rem;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
     margin-top: 0.5rem;
-
-    &:hover:not(:disabled) {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 16px $color-primary-shadow-medium;
-    }
-
-    &:active:not(:disabled) {
-      transform: translateY(0);
-    }
-
-    &:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-    }
   }
 }
