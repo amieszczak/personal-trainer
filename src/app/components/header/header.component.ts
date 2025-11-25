@@ -39,7 +39,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    // Cleanup if needed
   }
 
   @HostListener('window:scroll', ['$event'])
@@ -48,13 +47,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   private checkScrollPosition(): void {
-    // Consider "at top" if scrolled less than 50px
     this.isScrolledFromTop = window.scrollY > 50;
   }
 
   toggleMobileMenu(): void {
     this.isMobileMenuOpen = !this.isMobileMenuOpen;
-    // Prevent body scroll when menu is open
     if (this.isMobileMenuOpen) {
       document.body.style.overflow = 'hidden';
     } else {
@@ -65,15 +62,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
   handleMenuClick(sectionId: string, event: Event): void {
     event.preventDefault();
     
-    // Open modal for booking
     if (sectionId === 'umow-trening') {
       this.openBookingModal();
     } else {
-      // Scroll to section for other menu items
       this.scrollService.scrollToSection(sectionId);
     }
     
-    // Close mobile menu after action
     if (this.isMobileMenuOpen) {
       this.toggleMobileMenu();
     }
@@ -97,12 +91,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         console.log('Booking confirmed:', result);
-        // Handle the booking result if needed
       }
     });
   }
 
-  // Keep old method for backward compatibility if needed elsewhere
   scrollToSection(sectionId: string, event: Event): void {
     this.handleMenuClick(sectionId, event);
   }

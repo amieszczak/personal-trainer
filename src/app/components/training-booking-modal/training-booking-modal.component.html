@@ -13,12 +13,10 @@
   <div class="booking-modal__content">
     <form [formGroup]="bookingForm" (ngSubmit)="onSubmit()">
       
-      <!-- Date and Time Section -->
       <div class="booking-modal__section">
         <h3 class="booking-modal__section-title typo-modal-section-title">Wybierz termin treningu</h3>
         
         <div class="booking-modal__datetime">
-          <!-- Date Picker -->
           <mat-form-field appearance="outline" class="booking-modal__field booking-modal__field--date">
             <mat-label>Data</mat-label>
             <input 
@@ -35,7 +33,6 @@
             </mat-error>
           </mat-form-field>
 
-          <!-- Time Picker -->
           <mat-form-field appearance="outline" class="booking-modal__field booking-modal__field--time">
             <mat-label>Godzina</mat-label>
             <mat-select formControlName="time" placeholder="Wybierz godzinę">
@@ -50,11 +47,9 @@
         </div>
       </div>
 
-      <!-- Personal Information Section -->
       <div class="booking-modal__section">
         <h3 class="booking-modal__section-title typo-modal-section-title">Twoje dane</h3>
         
-        <!-- Full Name -->
         <mat-form-field appearance="outline" class="booking-modal__field">
           <mat-label>Imię i nazwisko</mat-label>
           <mat-icon matPrefix>person</mat-icon>
@@ -67,7 +62,6 @@
           </mat-error>
         </mat-form-field>
 
-        <!-- Email -->
         <mat-form-field appearance="outline" class="booking-modal__field">
           <mat-label>Email</mat-label>
           <mat-icon matPrefix>email</mat-icon>
@@ -81,7 +75,6 @@
           </mat-error>
         </mat-form-field>
 
-        <!-- Phone -->
         <mat-form-field appearance="outline" class="booking-modal__field">
           <mat-label>Telefon</mat-label>
           <mat-icon matPrefix>phone</mat-icon>
@@ -95,7 +88,6 @@
           </mat-error>
         </mat-form-field>
 
-        <!-- Message -->
         <mat-form-field appearance="outline" class="booking-modal__field booking-modal__field--textarea">
           <mat-label>Wiadomość (opcjonalnie)</mat-label>
           <mat-icon matPrefix class="textarea-icon">message</mat-icon>
@@ -107,7 +99,6 @@
         </mat-form-field>
       </div>
 
-      <!-- Agreements Section -->
       <div class="booking-modal__section booking-modal__section--agreements">
         <h3 class="booking-modal__section-title typo-modal-section-title">Zgody</h3>
         
@@ -130,7 +121,6 @@
         </div>
       </div>
 
-      <!-- Action Buttons -->
       <div class="booking-modal__actions">
         <button 
           mat-stroked-button 

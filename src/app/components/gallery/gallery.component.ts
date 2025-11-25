@@ -114,7 +114,7 @@ export class GalleryComponent implements OnInit, OnDestroy {
     }
   ];
 
-  currentIndex = 1; // Start at 1 because we'll add a clone at the beginning
+  currentIndex = 1; 
   slidesVisible = 2;
   translateX = 0;
   isTransitioning = false;
@@ -122,7 +122,6 @@ export class GalleryComponent implements OnInit, OnDestroy {
   private touchStartX = 0;
   private touchEndX = 0;
 
-  // Get all slides including clones
   get allSlides(): GalleryImage[] {
     const lastSlide = this.galleryImages[this.galleryImages.length - 1];
     const firstSlide = this.galleryImages[0];
@@ -150,7 +149,6 @@ export class GalleryComponent implements OnInit, OnDestroy {
     this.updateSlidesVisible();
     this.updateSliderPosition();
     
-    // Start/stop autoplay based on screen size
     if (this.isMobile()) {
       if (!this.autoplayInterval) {
         this.startAutoplay();

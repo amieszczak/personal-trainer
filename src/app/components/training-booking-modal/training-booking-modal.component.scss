@@ -9,7 +9,7 @@
   flex-direction: column;
   background: $color-bg-primary;
       border-radius: $border-radius-md;
-  overflow: hidden; // Restore hidden to allow proper scrolling
+  overflow: hidden;
   position: relative;
   z-index: 1;
 
@@ -45,12 +45,11 @@
   &__content {
     padding: 2rem;
     overflow-y: auto;
-    overflow-x: hidden; // Restore to hidden for proper scrolling
+    overflow-x: hidden; 
     flex: 1;
     position: relative;
     z-index: 1;
     
-    // Ensure smooth scrolling
     -webkit-overflow-scrolling: touch;
     scroll-behavior: smooth;
 
@@ -119,26 +118,22 @@
         background-color: transparent;
       }
 
-      // Add consistent horizontal padding
       .mat-mdc-form-field-infix {
         padding-left: 0.5rem;
         padding-right: 0.5rem;
       }
 
-      // Placeholder styling - hidden by default, shown on focus
       .mat-mdc-input-element::placeholder {
         color: transparent !important;
         opacity: 0 !important;
         transition: color $transition-fast, opacity $transition-fast;
       }
 
-      // Show placeholder when input is focused
       .mat-mdc-input-element:focus::placeholder {
         color: $color-text-lighter !important;
         opacity: 1 !important;
       }
 
-      // For select placeholder - keep visible since it's a dropdown
       .mat-mdc-select-placeholder {
         color: $color-text-lighter !important;
       }
@@ -182,12 +177,11 @@
       }
       
       .mat-mdc-form-field-icon-prefix {
-        padding-right: 1rem; // Increased from 0.75rem for more space
-        margin-left: 0.25rem; // Add left margin for consistent spacing
+        padding-right: 1rem; 
+        margin-left: 0.25rem; 
       }
     }
 
-    // Date and time fields - add horizontal padding
     &--date,
     &--time {
       ::ng-deep {
@@ -198,7 +192,6 @@
       }
     }
     
-    // Date field - hide placeholder completely
     &--date {
       ::ng-deep {
         .mat-mdc-input-element::placeholder {
@@ -213,7 +206,6 @@
       }
     }
     
-    // Time field - keep placeholder visible for guidance
     &--time {
       ::ng-deep {
         .mat-mdc-input-element::placeholder,
@@ -224,7 +216,6 @@
       }
     }
 
-    // Special styling for textarea icon to align at top
     &--textarea {
       ::ng-deep {
         .mat-mdc-text-field-wrapper {
@@ -243,14 +234,12 @@
           padding-left: 0.5rem !important;
         }
         
-        // Textarea placeholder - hidden by default
         textarea.mat-mdc-input-element::placeholder {
           color: transparent !important;
           opacity: 0 !important;
           transition: color $transition-fast, opacity $transition-fast;
         }
         
-        // Show placeholder when textarea is focused
         textarea.mat-mdc-input-element:focus::placeholder {
           color: $color-text-lighter !important;
           opacity: 1 !important;
@@ -365,7 +354,6 @@
   }
 }
 
-// Override Material Dialog styles within this modal only
 :host ::ng-deep {
   .mat-mdc-dialog-container {
     --mdc-dialog-container-shape: 12px;
@@ -379,7 +367,6 @@
   }
 }
 
-// Scrollbar styling
 .booking-modal__content {
   &::-webkit-scrollbar {
     width: 8px;

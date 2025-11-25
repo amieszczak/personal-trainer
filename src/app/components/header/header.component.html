@@ -12,7 +12,6 @@
       </div>
     </div>
 
-    <!-- Hamburger Button -->
     <button 
       class="header__hamburger" 
       [class.header__hamburger--active]="isMobileMenuOpen"
@@ -23,7 +22,6 @@
       <span class="header__hamburger-line"></span>
     </button>
 
-    <!-- Unified Navigation -->
     <nav class="header__nav" [class.header__nav--mobile-open]="isMobileMenuOpen">
       <ul class="header__menu">
         <li class="header__menu-item" *ngFor="let item of menuItems">

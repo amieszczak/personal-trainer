@@ -27,18 +27,14 @@
     margin-bottom: 0.5rem;
   }
 
-  &__subtitle {
-    // Typography handled by typo-section-subtitle
-  }
-
   &__slider-wrapper {
     position: relative;
     display: flex;
     align-items: center;
     gap: 1rem;
     flex: 1;
-    min-height: 0; // Allow flex children to shrink
-    overflow: hidden; // Clip the slider edges
+    min-height: 0; 
+    overflow: hidden;
     
     @media (min-width: $breakpoint-lg) {
       gap: 2rem;
@@ -205,7 +201,6 @@
       height: 40px;
     }
     
-    // Hide on very small screens
     @media (max-width: 480px) {
       display: none;
     }

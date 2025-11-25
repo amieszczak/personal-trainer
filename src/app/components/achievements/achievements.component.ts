@@ -76,7 +76,7 @@ export class AchievementsComponent implements OnInit, AfterViewInit, OnDestroy {
     const achievement = this.achievements.find(a => a.id === id);
     if (achievement) {
       achievement.expanded = !achievement.expanded;
-      // Recalculate position after height change
+
       setTimeout(() => {
         if (this.scrollListener) {
           this.scrollListener();
@@ -106,27 +106,21 @@ export class AchievementsComponent implements OnInit, AfterViewInit, OnDestroy {
       const viewportHeight = window.innerHeight;
       const middleOfViewport = viewportHeight / 2;
       
-      // Calculate when the middle of the title content reaches the middle of viewport
       const titleMiddlePosition = wrapperTop + (titleHeight / 2);
       
-      // Calculate the bottom position of title when fixed
       const titleBottomWhenFixed = middleOfViewport + (titleHeight / 2);
       
-      // When the middle of viewport hasn't reached the middle of title content yet
       if (titleMiddlePosition > middleOfViewport) {
         titleContent.style.position = 'absolute';
         titleContent.style.top = '0';
         titleContent.style.left = '0';
       }
-      // When bottom of title would go past the bottom of the list
       else if (titleBottomWhenFixed >= listBottom) {
-        // Calculate absolute position to align bottom of title with bottom of list
         const listBottomRelativeToWrapper = listRect.bottom - wrapperRect.top;
         titleContent.style.position = 'absolute';
         titleContent.style.top = `${listBottomRelativeToWrapper - titleHeight}px`;
         titleContent.style.left = '0';
       }
-      // When wrapper is in the middle (sticky position)
       else {
         titleContent.style.position = 'fixed';
         titleContent.style.top = `${middleOfViewport - titleHeight / 2}px`;
@@ -135,6 +129,6 @@ export class AchievementsComponent implements OnInit, AfterViewInit, OnDestroy {
     };
     
     window.addEventListener('scroll', this.scrollListener);
-    this.scrollListener(); // Initial call
+    this.scrollListener(); 
   }
 }

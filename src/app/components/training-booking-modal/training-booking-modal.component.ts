@@ -43,7 +43,6 @@ export class TrainingBookingModalComponent implements OnInit {
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<TrainingBookingModalComponent>
   ) {
-    // Set minimum date to today
     this.minDate = new Date();
   }
 
@@ -65,13 +64,10 @@ export class TrainingBookingModalComponent implements OnInit {
       // In a real application, this would send data to a backend
       console.log('Booking submitted:', this.bookingForm.value);
       
-      // Show success message (dummy implementation)
       alert('Dziękujemy! Twoja rezerwacja została przyjęta. Skontaktujemy się z Tobą wkrótce.');
       
-      // Close the dialog
       this.dialogRef.close(this.bookingForm.value);
     } else {
-      // Mark all fields as touched to show validation errors
       Object.keys(this.bookingForm.controls).forEach(key => {
         this.bookingForm.get(key)?.markAsTouched();
       });
@@ -83,16 +79,13 @@ export class TrainingBookingModalComponent implements OnInit {
   }
 
   onDatePickerClosed(): void {
-    // Ensure the date is properly set in the form control
     const dateControl = this.bookingForm.get('date');
     if (dateControl?.value) {
-      // Mark as touched to trigger validation if needed
       dateControl.markAsTouched();
       console.log('Date selected:', dateControl.value);
     }
   }
 
-  // Helper methods for form validation
   getErrorMessage(fieldName: string): string {
     const control = this.bookingForm.get(fieldName);
     

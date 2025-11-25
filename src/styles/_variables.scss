@@ -1,86 +1,82 @@
-// ========================================
 // COLOR SYSTEM
-// ========================================
 
 // Primary Brand Colors
-$color-primary: #2c5aa0;                    // Main brand blue
-$color-primary-light: #3d6bb5;              // Lighter brand blue
-$color-primary-dark: #1f4070;               // Darker brand blue
-$color-primary-lightest: #e8eef7;           // Very light blue tint
+$color-primary: #2c5aa0;
+$color-primary-light: #3d6bb5;
+$color-primary-dark: #1f4070;
+$color-primary-lightest: #e8eef7;
 
 // Accent Colors
-$color-accent: #2c5aa0;                     // Accent color (same as primary)
-$color-accent-hover: #1f4070;               // Accent hover state
+$color-accent: #2c5aa0;
+$color-accent-hover: #1f4070;
 
 // Background Colors
-$color-bg-primary: #ffffff;                 // Primary white background
-$color-bg-secondary: #f8f9fa;               // Light gray background
-$color-bg-tertiary: #e9ecef;                // Medium light gray background
-$color-bg-quaternary: #f8f8f8;              // Alternative light gray background
-$color-bg-hover: #e8eef7;                   // Hover background (light blue)
-$color-bg-light: #f0f0f0;                   // Light gray for borders/separators
+$color-bg-primary: #ffffff;
+$color-bg-secondary: #f8f9fa;
+$color-bg-tertiary: #e9ecef;
+$color-bg-quaternary: #f8f8f8;
+$color-bg-hover: #e8eef7;
+$color-bg-light: #f0f0f0;
 
 // Text Colors
-$color-text-primary: #1a1a1a;               // Primary dark text (headings)
-$color-text-secondary: #333;                // Secondary dark text
-$color-text-tertiary: #4a4a4a;              // Tertiary medium-dark text
-$color-text-body: #555;                     // Body text color
-$color-text-light: #666;                    // Light text color
-$color-text-lighter: #999999;               // Very light text (placeholders)
-$color-text-white: #ffffff;                 // White text
+$color-text-primary: #1a1a1a;
+$color-text-secondary: #333;
+$color-text-tertiary: #4a4a4a;
+$color-text-body: #555;
+$color-text-light: #666;
+$color-text-lighter: #999999;
+$color-text-white: #ffffff;
 
 // Border & Divider Colors
-$color-border-light: #e0e0e0;               // Light borders
-$color-border-medium: #d0d0d0;              // Medium light borders
-$color-border-lighter: #ccc;                // Very light borders
-$color-border-hover: #c0c0c0;               // Border hover state
-$color-border-dark: rgba(0, 0, 0, 0.23);    // Dark borders
-$color-border-darker: rgba(0, 0, 0, 0.87);  // Darker borders
-$color-border-checkbox: rgba(0, 0, 0, 0.54); // Checkbox border
+$color-border-light: #e0e0e0;
+$color-border-medium: #d0d0d0;
+$color-border-lighter: #ccc;
+$color-border-hover: #c0c0c0;
+$color-border-dark: rgba(0, 0, 0, 0.23);
+$color-border-darker: rgba(0, 0, 0, 0.87);
+$color-border-checkbox: rgba(0, 0, 0, 0.54);
 
 // Shadow Colors
-$color-shadow-light: rgba(0, 0, 0, 0.05);   // Very light shadow
-$color-shadow-medium: rgba(0, 0, 0, 0.08);  // Medium light shadow
-$color-shadow-base: rgba(0, 0, 0, 0.1);     // Base shadow
-$color-shadow-dark: rgba(0, 0, 0, 0.15);    // Dark shadow
-$color-shadow-darker: rgba(0, 0, 0, 0.2);   // Darker shadow
-$color-shadow-darkest: rgba(0, 0, 0, 0.3);  // Darkest shadow
-$color-shadow-heavy: rgba(0, 0, 0, 0.4);    // Heavy shadow
-$color-shadow-backdrop: rgba(0, 0, 0, 0.5); // Modal backdrop
+$color-shadow-light: rgba(0, 0, 0, 0.05);
+$color-shadow-medium: rgba(0, 0, 0, 0.08);
+$color-shadow-base: rgba(0, 0, 0, 0.1);
+$color-shadow-dark: rgba(0, 0, 0, 0.15);
+$color-shadow-darker: rgba(0, 0, 0, 0.2);
+$color-shadow-darkest: rgba(0, 0, 0, 0.3);
+$color-shadow-heavy: rgba(0, 0, 0, 0.4);
+$color-shadow-backdrop: rgba(0, 0, 0, 0.5);
 
 // Primary Brand with Opacity
-$color-primary-shadow-light: rgba(44, 90, 160, 0.2);   // Primary shadow light
-$color-primary-shadow-medium: rgba(44, 90, 160, 0.3);  // Primary shadow medium
-$color-primary-shadow-dark: rgba(44, 90, 160, 0.4);    // Primary shadow dark
-$color-primary-overlay: rgba(44, 90, 160, 0.98);       // Primary overlay (mobile menu)
-$color-primary-overlay-dark: rgba(31, 64, 112, 0.98);  // Primary dark overlay
+$color-primary-shadow-light: rgba(44, 90, 160, 0.2);
+$color-primary-shadow-medium: rgba(44, 90, 160, 0.3);
+$color-primary-shadow-dark: rgba(44, 90, 160, 0.4);
+$color-primary-overlay: rgba(44, 90, 160, 0.98);
+$color-primary-overlay-dark: rgba(31, 64, 112, 0.98);
 
 // Footer Colors
-$color-footer-bg-start: #2c3e50;            // Footer gradient start
-$color-footer-bg-end: #34495e;              // Footer gradient end
-$color-footer-text: #ffffff;                // Footer text
-$color-footer-text-light: rgba(255, 255, 255, 0.8);    // Footer light text
-$color-footer-text-lighter: rgba(255, 255, 255, 0.7);  // Footer lighter text
-$color-footer-text-lightest: rgba(255, 255, 255, 0.6); // Footer lightest text
-$color-footer-divider: rgba(255, 255, 255, 0.1);       // Footer divider
-$color-footer-separator: rgba(255, 255, 255, 0.3);     // Footer separator
+$color-footer-bg-start: #2c3e50;
+$color-footer-bg-end: #34495e;
+$color-footer-text: #ffffff;
+$color-footer-text-light: rgba(255, 255, 255, 0.8);
+$color-footer-text-lighter: rgba(255, 255, 255, 0.7);
+$color-footer-text-lightest: rgba(255, 255, 255, 0.6);
+$color-footer-divider: rgba(255, 255, 255, 0.1);
+$color-footer-separator: rgba(255, 255, 255, 0.3);
 
 // Status Colors
-$color-error: #f44336;                      // Error/danger color
-$color-disabled-bg: #cccccc;                // Disabled background
-$color-disabled-text: #666666;              // Disabled text
+$color-error: #f44336;
+$color-disabled-bg: #cccccc;
+$color-disabled-text: #666666;
 
 // Scrollbar Colors
-$color-scrollbar-track: #f1f1f1;            // Scrollbar track
-$color-scrollbar-thumb: #ccc;               // Scrollbar thumb
-$color-scrollbar-thumb-hover: #999;         // Scrollbar thumb hover
+$color-scrollbar-track: #f1f1f1;
+$color-scrollbar-thumb: #ccc;
+$color-scrollbar-thumb-hover: #999;
 
 // White Color Variations
-$color-white-transparent: rgba(255, 255, 255, 0.1);  // Transparent white
+$color-white-transparent: rgba(255, 255, 255, 0.1);
 
-// ========================================
 // LAYOUT
-// ========================================
 
 // Breakpoints
 $breakpoint-sm: 640px;
@@ -89,91 +85,86 @@ $breakpoint-lg: 1024px;
 $breakpoint-xl: 1280px;
 
 // Container padding
-$container-padding-mobile: 1.25rem;   // Mobile devices
-$container-padding-tablet: 2rem;      // Tablets (768px+)
-$container-padding-desktop: 3.5rem;   // Desktop (1024px+)
-$container-padding-wide: 6rem;        // Wide screens (1280px+)
+$container-padding-mobile: 1.25rem;
+$container-padding-tablet: 2rem;
+$container-padding-desktop: 3.5rem;
+$container-padding-wide: 6rem;
 
 // Maximum content width
 $max-width-content: 1200px;
 
-// ========================================
 // VISUAL DESIGN TOKENS
-// ========================================
 
 // Border Radius
-$border-radius-sm: 2px;      // Small (underlines, progress bars)
-$border-radius-base: 8px;    // Standard (cards, buttons, inputs)
-$border-radius-md: 12px;     // Medium (larger cards)
-$border-radius-lg: 16px;     // Large (prominent cards)
-$border-radius-xl: 20px;     // Extra large
-$border-radius-full: 50%;    // Circle (buttons, avatars)
+$border-radius-sm: 2px;
+$border-radius-base: 8px;
+$border-radius-md: 12px;
+$border-radius-lg: 16px;
+$border-radius-xl: 20px;
+$border-radius-full: 50%;
 
 // Transitions
-$transition-fast: 0.2s ease;                                    // Fast transitions
-$transition-base: 0.3s ease;                                    // Standard transitions
-$transition-slow: 0.4s ease;                                    // Slower transitions
-$transition-smooth: 0.5s cubic-bezier(0.4, 0, 0.2, 1);        // Smooth slider animations
-$transition-bouncy: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55); // Bouncy animations
+$transition-fast: 0.2s ease;
+$transition-base: 0.3s ease;
+$transition-slow: 0.4s ease;
+$transition-smooth: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+$transition-bouncy: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
 // Common Box Shadows
-$shadow-xs: 0 1px 2px $color-shadow-light;                     // Extra small shadow
-$shadow-sm: 0 2px 4px $color-shadow-light;                     // Small shadow
-$shadow-base: 0 2px 8px $color-shadow-base;                    // Base shadow
-$shadow-md: 0 4px 12px $color-shadow-medium;                   // Medium shadow
-$shadow-lg: 0 6px 16px $color-shadow-darker;                   // Large shadow
-$shadow-xl: 0 8px 20px $color-shadow-darker;                   // Extra large shadow
-$shadow-2xl: 0 20px 40px $color-shadow-dark;                   // 2X large shadow
-$shadow-primary-sm: 0 4px 12px $color-primary-shadow-medium;   // Primary shadow small
-$shadow-primary-md: 0 6px 16px $color-primary-shadow-dark;     // Primary shadow medium
-$shadow-primary-lg: 0 8px 16px $color-primary-shadow-medium;   // Primary shadow large
-$shadow-primary-xl: 0 8px 20px $color-primary-shadow-dark;     // Primary shadow XL
+$shadow-xs: 0 1px 2px $color-shadow-light;
+$shadow-sm: 0 2px 4px $color-shadow-light;
+$shadow-base: 0 2px 8px $color-shadow-base;
+$shadow-md: 0 4px 12px $color-shadow-medium;
+$shadow-lg: 0 6px 16px $color-shadow-darker;
+$shadow-xl: 0 8px 20px $color-shadow-darker;
+$shadow-2xl: 0 20px 40px $color-shadow-dark;
+$shadow-primary-sm: 0 4px 12px $color-primary-shadow-medium;
+$shadow-primary-md: 0 6px 16px $color-primary-shadow-dark;
+$shadow-primary-lg: 0 8px 16px $color-primary-shadow-medium;
+$shadow-primary-xl: 0 8px 20px $color-primary-shadow-dark;
 
-// ========================================
 // TYPOGRAPHY
-// ========================================
 
 // Font Families
 $font-family-primary: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 
 // Font Sizes
-$font-size-xs: 0.875rem;        // 14px - Small text
-$font-size-sm: 0.938rem;        // 15px - Form labels, small body
-$font-size-base: 1rem;          // 16px - Base body text
-$font-size-md: 1.125rem;        // 18px - Medium text, large body
-$font-size-lg: 1.25rem;         // 20px - Small headings, info titles
-$font-size-xl: 1.375rem;        // 22px - Achievement titles
-$font-size-2xl: 1.5rem;         // 24px - Card names, header logo
-$font-size-3xl: 1.75rem;        // 28px - Form titles
-$font-size-4xl: 2rem;           // 32px - Section titles (mobile)
-$font-size-5xl: 2.5rem;         // 40px - Section titles
-$font-size-6xl: 2.8rem;         // 45px - Mobile menu CTA
-$font-size-7xl: 3rem;           // 48px - Large titles
-$font-size-8xl: 3.5rem;         // 56px - Hero titles
+$font-size-xs: 0.875rem;
+$font-size-sm: 0.938rem;
+$font-size-base: 1rem;
+$font-size-md: 1.125rem;
+$font-size-lg: 1.25rem;
+$font-size-xl: 1.375rem;
+$font-size-2xl: 1.5rem;
+$font-size-3xl: 1.75rem;
+$font-size-4xl: 2rem;
+$font-size-5xl: 2.5rem;
+$font-size-6xl: 2.8rem;
+$font-size-7xl: 3rem;
+$font-size-8xl: 3.5rem;
 
 // Font Weights
-$font-weight-regular: 400;      // Regular text
-$font-weight-medium: 500;       // Medium emphasis
-$font-weight-semibold: 600;     // Subtitles, form titles
-$font-weight-bold: 700;         // Main headings
-$font-weight-black: 900;        // Extra bold (mobile menu)
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+$font-weight-black: 900;
 
 // Line Heights
-$line-height-tight: 1;          // Header logo, tight text
-$line-height-snug: 1.2;         // Headings
-$line-height-normal: 1.4;       // Achievement titles
-$line-height-relaxed: 1.5;      // Quotes
-$line-height-comfortable: 1.6;  // Body text, descriptions
-$line-height-loose: 1.7;        // Contact text, comfortable reading
+$line-height-tight: 1;
+$line-height-snug: 1.2;
+$line-height-normal: 1.4;
+$line-height-relaxed: 1.5;
+$line-height-comfortable: 1.6;
+$line-height-loose: 1.7;
 
 // Letter Spacing
-$letter-spacing-tighter: 0.02em;  // Mobile menu links
-$letter-spacing-tight: 0.05em;    // Footer headings, buttons
-$letter-spacing-normal: 0.08em;   // Header logo
-$letter-spacing-wide: normal;     // Default
+$letter-spacing-tighter: 0.02em;
+$letter-spacing-tight: 0.05em;
+$letter-spacing-normal: 0.08em;
+$letter-spacing-wide: normal;
 
 // Text Transform
 $text-transform-none: none;
 $text-transform-uppercase: uppercase;
 $text-transform-capitalize: capitalize;
-

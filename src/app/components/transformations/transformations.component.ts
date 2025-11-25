@@ -78,7 +78,7 @@ export class TransformationsComponent implements OnInit, OnDestroy {
     }
   ];
 
-  currentIndex = 1; // Start at 1 because we'll add a clone at the beginning
+  currentIndex = 1;
   slidesVisible = 3;
   translateX = 0;
   isTransitioning = false;
@@ -86,7 +86,6 @@ export class TransformationsComponent implements OnInit, OnDestroy {
   private touchStartX = 0;
   private touchEndX = 0;
 
-  // Get all slides including clones
   get allSlides(): Transformation[] {
     const lastSlide = this.transformations[this.transformations.length - 1];
     const firstSlide = this.transformations[0];
@@ -119,25 +118,15 @@ export class TransformationsComponent implements OnInit, OnDestroy {
   private updateSliderPosition(instant: boolean = false): void {
     this.isTransitioning = !instant;
     
-    // Calculate slide width as percentage
     const slideWidth = 100 / this.slidesVisible;
     
-    // Center the active slide in the viewport
-    // We want the active slide to be in the middle of the screen
-    // So we offset by: (currentIndex * slideWidth) - (50% of viewport - 50% of slide)
-    // Simplified: move left by currentIndex slides, then move right to center it
-    
     if (this.slidesVisible === 3) {
-      // For 3 slides: center the active slide
-      // Move left by the index amount, then add back half the viewport minus half a slide
       this.translateX = -(this.currentIndex * slideWidth) + 50 - (slideWidth / 2);
     } else {
-      // For 2 slides: center the active slide
       this.translateX = -(this.currentIndex * slideWidth) + 50 - (slideWidth / 2);
     }
 
     if (instant) {
-      // Force reflow to ensure the instant position change happens
       setTimeout(() => {
         this.isTransitioning = true;
       }, 50);
@@ -148,7 +137,6 @@ export class TransformationsComponent implements OnInit, OnDestroy {
     this.currentIndex++;
     this.updateSliderPosition();
 
-    // If we reached the last clone (first slide), jump back to the real first slide
     if (this.currentIndex === this.allSlides.length - 1) {
       setTimeout(() => {
         this.currentIndex = 1;
@@ -161,7 +149,6 @@ export class TransformationsComponent implements OnInit, OnDestroy {
     this.currentIndex--;
     this.updateSliderPosition();
 
-    // If we reached the first clone (last slide), jump forward to the real last slide
     if (this.currentIndex === 0) {
       setTimeout(() => {
         this.currentIndex = this.transformations.length;
@@ -171,16 +158,14 @@ export class TransformationsComponent implements OnInit, OnDestroy {
   }
 
   goToSlide(index: number): void {
-    // Add 1 to account for the clone at the beginning
     this.currentIndex = index + 1;
     this.updateSliderPosition();
   }
 
-  // Get the actual transformation index for display
   getActualIndex(index: number): number {
-    if (index === 0) return this.transformations.length - 1; // Last clone
-    if (index === this.allSlides.length - 1) return 0; // First clone
-    return index - 1; // Regular slides
+    if (index === 0) return this.transformations.length - 1; 
+    if (index === this.allSlides.length - 1) return 0; 
+    return index - 1; 
   }
 
   onTouchStart(event: TouchEvent): void {

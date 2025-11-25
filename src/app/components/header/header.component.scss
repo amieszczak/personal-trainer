@@ -81,7 +81,6 @@
     display: flex;
     align-items: center;
 
-    // Mobile overlay mode
     &--mobile-open {
       position: fixed;
       top: 0;
@@ -100,7 +99,7 @@
       .header__menu {
         flex-direction: column;
         gap: 1.5rem;
-        align-items: flex-start; // Align items to left
+        align-items: flex-start;
         text-align: left;
       }
 
@@ -168,7 +167,6 @@
     }
   }
 
-  // Hamburger Button
   &__hamburger {
     display: none;
     flex-direction: column;
@@ -216,7 +214,6 @@
       width: 100%;
     }
 
-    // Transform to X when active
     &--active {
       .header__hamburger-line {
         background-color: $color-text-white;
@@ -303,7 +300,6 @@
   }
 }
 
-// Keyframe Animations
 @keyframes powerExplosion {
   0% {
     transform: scale(0.8);
@@ -341,7 +337,6 @@
   }
 }
 
-// 992px Breakpoint - Show hamburger, hide desktop menu
 @media (max-width: 992px) {
   .header {
     &__nav {
@@ -386,7 +381,7 @@
     }
 
     &__title {
-      display: none; // Hide title on small mobile devices
+      display: none;
     }
 
     &__menu {
@@ -403,7 +398,6 @@
       }
     }
 
-    // Mobile overlay menu adjustments
     &__nav--mobile-open {
       .header__menu {
         gap: 1rem;
@@ -412,7 +406,6 @@
   }
 }
 
-// Extra small mobile devices
 @media (max-width: 480px) {
   .header {
 
