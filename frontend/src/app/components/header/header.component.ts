@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { Subscription } from 'rxjs';
 import { ScrollService } from '../../services/scroll.service';
 import { TrainingBookingModalComponent } from '../training-booking-modal/training-booking-modal.component';
 
@@ -19,6 +20,7 @@ interface MenuItem {
 export class HeaderComponent implements OnInit, OnDestroy {
   isScrolledFromTop = false;
   isMobileMenuOpen = false;
+  private subscriptions = new Subscription();
 
   menuItems: MenuItem[] = [
     { id: 'osiagniecia', label: 'Osiągnięcia' },
@@ -39,6 +41,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    // Fix Bug 1: Restore body overflow if mobile menu is open
+    if (this.isMobileMenuOpen) {
+      document.body.style.overflow = '';
+    }
+    
+    // Fix Bug 2: Unsubscribe from all subscriptions to prevent memory leaks
+    this.subscriptions.unsubscribe();
   }
 
   @HostListener('window:scroll', ['$event'])
@@ -88,11 +97,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
       }
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        console.log('Booking confirmed:', result);
-      }
-    });
+    // Store subscription to prevent memory leaks
+    this.subscriptions.add(
+      dialogRef.afterClosed().subscribe(result => {
+        if (result) {
+          console.log('Booking confirmed:', result);
+        }
+      })
+    );
   }
 
   scrollToSection(sectionId: string, event: Event): void {
