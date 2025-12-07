@@ -1,15 +1,6 @@
 import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-interface Transformation {
-  id: number;
-  name: string;
-  age: number;
-  description: string;
-  story: string;
-  quote: string;
-  image?: string;
-}
+import { TransformationService, Transformation } from '../../services/transformation.service';
 
 @Component({
   selector: 'app-transformations',
@@ -19,64 +10,7 @@ interface Transformation {
   styleUrl: './transformations.component.scss'
 })
 export class TransformationsComponent implements OnInit, OnDestroy {
-  transformations: Transformation[] = [
-    {
-      id: 1,
-      name: 'Marek Kowalski',
-      age: 35,
-      description: 'Stracił 25 kg w 6 miesięcy',
-      story: 'Marek przyszedł do mnie z nadwagą i brakiem energii. Wspólnie opracowaliśmy plan treningowy i dietetyczny dostosowany do jego trybu życia. Skupiliśmy się na budowaniu nawyków, które można utrzymać długoterminowo. Po 6 miesiącach ciężkiej pracy osiągnął swój cel.',
-      quote: 'Nigdy nie myślałem, że mogę tak wyglądać. Adrian nie tylko pomógł mi schudnąć, ale też nauczył, jak żyć zdrowo każdego dnia.'
-    },
-    {
-      id: 2,
-      name: 'Anna Nowak',
-      age: 28,
-      description: 'Zbudowała masę mięśniową i poprawiła sylwetkę',
-      story: 'Anna chciała nabrać pewności siebie i zbudować mocniejsze ciało. Przez 8 miesięcy pracowaliśmy nad siłą i masą mięśniową. Program obejmował trening siłowy 4 razy w tydzień oraz zbilansowaną dietę wysokobiałkową.',
-      quote: 'Czuję się silniejsza niż kiedykolwiek. Adrian pokazał mi, że kobiety mogą i powinny trenować z ciężarami!'
-    },
-    {
-      id: 3,
-      name: 'Piotr Wiśniewski',
-      age: 42,
-      description: 'Powrócił do formy po kontuzji',
-      story: 'Piotr po kontuzji kręgosłupa potrzebował specjalistycznego podejścia. Stworzyliśmy program rehabilitacyjny, który stopniowo wprowadzał go z powrotem do pełnej aktywności. Skupiliśmy się na stabilizacji i wzmocnieniu mięśni głębokich.',
-      quote: 'Dzięki profesjonalnemu podejściu Adriana udało mi się nie tylko wrócić do formy, ale czuję się lepiej niż przed kontuzją.'
-    },
-    {
-      id: 4,
-      name: 'Karolina Lewandowska',
-      age: 31,
-      description: 'Przygotowanie do pierwszego maratonu',
-      story: 'Karolina marzyła o ukończeniu maratonu. Przez 5 miesięcy pracowaliśmy nad jej wytrzymałością, techniką biegu i siłą. Program treningowy był zindywidualizowany i dostosowywany do jej postępów.',
-      quote: 'Ukończyłam mój pierwszy maraton dzięki Adrianowi! Jego wsparcie i wiedza były nieocenione.'
-    },
-    {
-      id: 5,
-      name: 'Tomasz Zieliński',
-      age: 38,
-      description: 'Transformacja sylwetki - rzeźba mięśni',
-      story: 'Tomasz miał już doświadczenie w treningu, ale chciał przejść na wyższy poziom. Przez 4 miesiące skupiliśmy się na definicji mięśni i redukcji tkanki tłuszczowej przy zachowaniu masy mięśniowej. Program obejmował intensywne treningi i precyzyjnie zaplanowaną dietę.',
-      quote: 'Adrian pomógł mi osiągnąć formę, o której zawsze marzyłem. Jego wiedza o treningu i diecie jest imponująca.'
-    },
-    {
-      id: 6,
-      name: 'Magdalena Dąbrowska',
-      age: 45,
-      description: 'Odzyskała formę i energię po ciąży',
-      story: 'Magdalena po dwóch ciążach chciała wrócić do aktywności fizycznej i odzyskać swoją formę. Stworzyliśmy bezpieczny program, który uwzględniał jej sytuację życiową i wyzwania związane z byciem mamą. Treningi były efektywne, ale nie zabierały zbyt wiele czasu.',
-      quote: 'Adrian zrozumiał moje potrzeby jako mamy. Program był idealny - efektywny, ale realny do wykonania.'
-    },
-    {
-      id: 7,
-      name: 'Jakub Krawczyk',
-      age: 26,
-      description: 'Z początkującego do zaawansowanego sportowca',
-      story: 'Jakub rozpoczynał swoją przygodę z siłownią bez doświadczenia. Przez rok wspólnej pracy nauczyliśmy się wszystkich podstawowych ćwiczeń, zbudował solidne fundamenty siły i masy mięśniowej. Teraz sam planuje treningi na podstawie wiedzy, którą zdobył.',
-      quote: 'Adrian nie tylko trenował mnie, ale nauczył jak to robić samodzielnie. To najlepszy nauczyciel, jakiego mogłem sobie wymarzyć.'
-    }
-  ];
+  transformations: Transformation[] = [];
 
   currentIndex = 1;
   slidesVisible = 3;
@@ -86,15 +20,32 @@ export class TransformationsComponent implements OnInit, OnDestroy {
   private touchStartX = 0;
   private touchEndX = 0;
 
+  constructor(private transformationService: TransformationService) {}
+
   get allSlides(): Transformation[] {
+    if (this.transformations.length === 0) return [];
     const lastSlide = this.transformations[this.transformations.length - 1];
     const firstSlide = this.transformations[0];
     return [lastSlide, ...this.transformations, firstSlide];
   }
 
   ngOnInit(): void {
+    this.loadTransformations();
     this.updateSlidesVisible();
     this.updateSliderPosition();
+  }
+
+  private loadTransformations(): void {
+    this.transformationService.getAllTransformations().subscribe({
+      next: (data) => {
+        this.transformations = data;
+        this.updateSliderPosition();
+      },
+      error: (error) => {
+        console.error('Error loading transformations:', error);
+        // Optionally: show error message to user
+      }
+    });
   }
 
   ngOnDestroy(): void {

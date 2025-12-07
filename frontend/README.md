@@ -8,30 +8,22 @@ Angular 19 frontend application for the Personal Trainer platform.
 - TypeScript 5.7
 - SCSS
 - Angular Material
-- RxJS
 
 ## Getting Started
 
 ### Prerequisites
 
 - Node.js v22.14.0 or higher
-- npm
+- Backend API running at `http://localhost:5000`
 
-### Installation
+### Installation & Run
 
 ```bash
 npm install
+npm start
 ```
 
-### Development Server
-
-```bash
-npm run start
-```
-
-The application will be available at `http://localhost:4200/`
-
-The app will automatically reload if you change any of the source files.
+Application: `http://localhost:4200`
 
 ### Build
 
@@ -39,12 +31,10 @@ The app will automatically reload if you change any of the source files.
 npm run build
 ```
 
-Build artifacts will be stored in the `dist/` directory.
-
-### Running Tests
+### Tests
 
 ```bash
-npm run test
+npm test
 ```
 
 ## Project Structure
@@ -53,36 +43,10 @@ npm run test
 frontend/
 ├── src/
 │   ├── app/
-│   │   ├── components/    # Reusable UI components
-│   │   ├── services/      # Business logic and API services
-│   │   └── ...
-│   ├── styles/            # Global styles and SCSS variables
-│   └── ...
-├── public/                # Static assets (images, icons)
-└── ...                    # Configuration files
+│   │   ├── components/    # UI components
+│   │   └── services/      # API services
+│   ├── environments/      # Environment configuration
+│   └── styles/            # Global styles
+└── public/                # Static assets
 ```
-
-## Components
-
-- **Header** - Navigation and branding
-- **Hero** - Landing section
-- **About Me** - Trainer information
-- **Achievements** - Trainer accomplishments
-- **Transformations** - Client success stories
-- **Gallery** - Photo gallery
-- **Contact** - Contact form and information
-- **Training Booking Modal** - Modal for booking training sessions
-- **Footer** - Footer with links and info
-
-## Services
-
-- **ScrollService** - Smooth scrolling functionality
-
-## Future Integration
-
-This frontend will be integrated with the C# backend API for:
-- User authentication
-- Training session booking
-- Client management
-- Dynamic content management
 
