@@ -59,6 +59,13 @@ export class TransformationService {
   }
 
   /**
+   * Create multiple transformations in bulk
+   */
+  createBulkTransformations(transformations: CreateTransformationDto[]): Observable<Transformation[]> {
+    return this.http.post<Transformation[]>(`${this.apiUrl}/bulk`, transformations);
+  }
+
+  /**
    * Update an existing transformation
    */
   updateTransformation(id: number, transformation: CreateTransformationDto): Observable<Transformation> {

@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -12,6 +13,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class AdminPanelComponent {
   private fb = inject(FormBuilder);
+  private router = inject(Router);
   authService = inject(AuthService);
 
   loginForm: FormGroup;
@@ -59,5 +61,9 @@ export class AdminPanelComponent {
     this.loginForm.reset();
     this.loginError = false;
     this.errorMessage = '';
+  }
+
+  navigateToTransformations(): void {
+    this.router.navigate(['/admin-panel/transformations']);
   }
 }
