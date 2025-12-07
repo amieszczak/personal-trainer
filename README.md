@@ -38,7 +38,16 @@ personal-trainer/
   - npm
 
 - **Backend:**
-  - .NET SDK 8.0 or higher (when implemented)
+  - .NET SDK 10.0 or higher
+
+### Quick Start
+
+1. **Clone the repository**
+2. **Set up environment variables** (optional):
+   ```bash
+   cp .env.example .env
+   # Edit .env with your configuration
+   ```
 
 ### Frontend Development
 
@@ -75,10 +84,118 @@ Build artifacts will be stored in the `frontend/dist/` directory.
 Navigate to the backend directory:
 
 ```bash
-cd backend
+cd backend/PersonalTrainer.API
 ```
 
-*(Backend setup instructions will be added once implemented)*
+#### First Time Setup
+
+Install .NET SDK 10.0 if not already installed:
+```bash
+# macOS (Homebrew)
+brew install --cask dotnet-sdk
+
+# Verify installation (should show 10.0.x)
+dotnet --version
+```
+
+#### Restore & Run
+
+```bash
+# Restore dependencies
+dotnet restore
+
+# Run the API
+dotnet run
+
+# Or use watch mode (auto-reload)
+dotnet watch run
+```
+
+The API will be available at:
+- **HTTP**: http://localhost:5000
+- **HTTPS**: https://localhost:5001
+- **API Documentation**: http://localhost:5000/scalar/v1
+
+For detailed backend documentation, see [backend/README.md](backend/README.md)
+
+## Running Both Frontend & Backend
+
+For full functionality, run both services simultaneously:
+
+**Terminal 1 - Backend:**
+```bash
+cd backend/PersonalTrainer.API
+dotnet watch run
+```
+
+**Terminal 2 - Frontend:**
+```bash
+cd frontend
+npm start
+```
+
+Then access:
+- Frontend: http://localhost:4200
+- Backend API: http://localhost:5000
+- API Documentation: http://localhost:5000/scalar/v1
+
+## Connecting Frontend to Backend
+
+The backend is configured with CORS to accept requests from `http://localhost:4200`.
+
+To integrate API calls in Angular:
+
+1. **Create an environment configuration** (`frontend/src/environments/environment.ts`):
+```typescript
+export const environment = {
+  production: false,
+  apiUrl: 'http://localhost:5000/api'
+};
+```
+
+2. **Create a service** (example for trainings):
+```typescript
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { environment } from '../environments/environment';
+
+@Injectable({ providedIn: 'root' })
+export class TrainingService {
+  private apiUrl = `${environment.apiUrl}/trainings`;
+
+  constructor(private http: HttpClient) {}
+
+  getAllTrainings(): Observable<Training[]> {
+    return this.http.get<Training[]>(this.apiUrl);
+  }
+
+  getTrainingById(id: number): Observable<Training> {
+    return this.http.get<Training>(`${this.apiUrl}/${id}`);
+  }
+}
+```
+
+3. **Use the service in components**:
+```typescript
+export class TrainingsComponent implements OnInit {
+  trainings: Training[] = [];
+
+  constructor(private trainingService: TrainingService) {}
+
+  ngOnInit() {
+    this.trainingService.getAllTrainings()
+      .subscribe(data => this.trainings = data);
+  }
+}
+```
+
+## API Documentation
+
+When the backend is running, full API documentation is available at:
+- **Scalar API Reference**: http://localhost:5000/scalar/v1
+
+This provides a modern, interactive documentation interface for all endpoints with the ability to test them directly.
 
 ## License
 
