@@ -77,20 +77,38 @@ public class Init
             using var connection = new SqliteConnection(connectionString);
             await connection.OpenAsync();
 
-            // Check if table already exists
-            var checkTableQuery = @"
-                SELECT COUNT(*) 
-                FROM sqlite_master 
-                WHERE type='table' AND name='Transformations'";
+            // Define tables that should exist
+            var requiredTables = new[] { "Transformations", "Achievements" };
 
-            using var checkCommand = new SqliteCommand(checkTableQuery, connection);
-            var result = await checkCommand.ExecuteScalarAsync();
-            var tableExists = result != null && Convert.ToInt64(result) > 0;
-
-            if (tableExists)
+            // Check if all tables already exist
+            var missingTables = new List<string>();
+            foreach (var tableName in requiredTables)
             {
-                _logger.LogInformation("Transformations table already exists. Skipping creation.");
+                var checkTableQuery = @"
+                    SELECT COUNT(*) 
+                    FROM sqlite_master 
+                    WHERE type='table' AND name=@TableName";
+
+                using var checkCommand = new SqliteCommand(checkTableQuery, connection);
+                checkCommand.Parameters.AddWithValue("@TableName", tableName);
+                var result = await checkCommand.ExecuteScalarAsync();
+                var tableExists = result != null && Convert.ToInt64(result) > 0;
+
+                if (!tableExists)
+                {
+                    missingTables.Add(tableName);
+                }
+            }
+
+            if (missingTables.Count == 0)
+            {
+                _logger.LogInformation("All required tables already exist. Skipping creation.");
                 return;
+            }
+
+            if (missingTables.Count > 0)
+            {
+                _logger.LogInformation("Missing tables detected: {Tables}. Executing SQL script.", string.Join(", ", missingTables));
             }
 
             // Execute the SQL script (SQLite doesn't use GO statements)

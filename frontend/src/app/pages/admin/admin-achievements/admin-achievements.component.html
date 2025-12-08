@@ -1,0 +1,90 @@
+<div class="admin-achievements">
+  <div class="header">
+    <button class="back-button" (click)="goBack()">← Back to Admin Panel</button>
+    <h1>Manage Achievements</h1>
+    <p class="subtitle">Create and manage achievements</p>
+  </div>
+
+  @if (isLoadingData) {
+    <div class="loading-message">
+      <p>Loading achievements...</p>
+    </div>
+  } @else {
+    <form [formGroup]="achievementForm" (ngSubmit)="onSubmit()">
+      <div formArrayName="achievements">
+        <div 
+          *ngFor="let achievement of achievementsArray.controls; let i = index" 
+          [formGroupName]="i"
+          class="achievement-card"
+        >
+          <div class="card-header">
+            <div>
+              <h3>
+                @if (achievementsArray.at(i).get('id')?.value) {
+                  <span class="existing-badge">Existing</span>
+                  Achievement #{{ achievementsArray.at(i).get('id')?.value }}
+                } @else {
+                  <span class="new-badge">New</span>
+                  Achievement {{ i + 1 }}
+                }
+              </h3>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label [for]="'title-' + i">Title <span class="required">*</span></label>
+            <input 
+              type="text" 
+              [id]="'title-' + i"
+              formControlName="title"
+              placeholder="Enter achievement title"
+              [class.invalid]="achievementsArray.at(i).get('title')?.invalid && achievementsArray.at(i).get('title')?.touched"
+            />
+            @if (achievementsArray.at(i).get('title')?.invalid && achievementsArray.at(i).get('title')?.touched) {
+              <span class="error-message">Title is required</span>
+            }
+          </div>
+
+          <div class="form-group">
+            <label [for]="'description-' + i">Description <span class="required">*</span></label>
+            <textarea 
+              [id]="'description-' + i"
+              formControlName="description"
+              placeholder="Enter achievement description"
+              rows="4"
+              [class.invalid]="achievementsArray.at(i).get('description')?.invalid && achievementsArray.at(i).get('description')?.touched"
+            ></textarea>
+            @if (achievementsArray.at(i).get('description')?.invalid && achievementsArray.at(i).get('description')?.touched) {
+              <span class="error-message">Description is required</span>
+            }
+          </div>
+        </div>
+      </div>
+
+      <div class="submit-section">
+        <button type="submit" class="submit-button" [disabled]="isLoading">
+          @if (isLoading) {
+            Saving...
+          } @else {
+            Save Achievements
+          }
+        </button>
+        <button type="button" class="add-button" (click)="addAchievement()" [disabled]="isLoading">
+          + Add Another Achievement
+        </button>
+      </div>
+
+      @if (successMessage) {
+        <div class="success-message">
+          {{ successMessage }}
+        </div>
+      }
+
+      @if (errorMessage) {
+        <div class="error-message">
+          {{ errorMessage }}
+        </div>
+      }
+    </form>
+  }
+</div>

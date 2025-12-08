@@ -3,6 +3,47 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": ".NET Core Launch (API)",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build",
+      "program": "${workspaceFolder}/backend/PersonalTrainer.API/bin/Debug/net10.0/PersonalTrainer.API.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/backend/PersonalTrainer.API",
+      "stopAtEntry": false,
+      "justMyCode": true,
+      "enableStepFiltering": false,
+      "requireExactSource": false,
+      "symbolOptions": {
+        "searchPaths": [],
+        "searchMicrosoftSymbolServer": false,
+        "searchNuGetOrgSymbolServer": false
+      },
+      "serverReadyAction": {
+        "action": "openExternally",
+        "pattern": "\\bNow listening on:\\s+(https?://\\S+)",
+        "uriFormat": "%s/scalar/v1"
+      },
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "sourceFileMap": {
+        "/Views": "${workspaceFolder}/Views"
+      },
+      "logging": {
+        "moduleLoad": false,
+        "trace": false,
+        "engineLogging": false
+      }
+    },
+    {
+      "name": ".NET Core Attach",
+      "type": "coreclr",
+      "request": "attach",
+      "justMyCode": true,
+      "requireExactSource": false
+    },
+    {
       "name": "ng serve",
       "type": "chrome",
       "request": "launch",

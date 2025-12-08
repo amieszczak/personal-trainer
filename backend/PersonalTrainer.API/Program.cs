@@ -1,7 +1,7 @@
 using Scalar.AspNetCore;
 using PersonalTrainer.API.Services.Interfaces;
 using PersonalTrainer.API.Services.Implementations;
-using PersonalTrainer.API.Data.Migrations;
+using PersonalTrainer.API.Data.Migrations; 
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +15,7 @@ builder.Services.AddOpenApi();
 
 // Register services
 builder.Services.AddScoped<ITransformationService, TransformationService>();
+builder.Services.AddScoped<IAchievementService, AchievementService>();
 
 builder.Services.AddCors(options =>
 {
@@ -53,6 +54,8 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
     app.MapScalarApiReference();
 }
+
+app.UseRouting();
 
 app.UseCors("AllowAngularApp");
 

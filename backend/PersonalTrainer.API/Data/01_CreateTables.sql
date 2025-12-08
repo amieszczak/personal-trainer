@@ -11,3 +11,9 @@ CREATE TABLE IF NOT EXISTS Transformations (
     Quote TEXT NOT NULL,
     Image TEXT NULL
 );
+
+CREATE TABLE IF NOT EXISTS Achievements (
+    Id INTEGER PRIMARY KEY AUTOINCREMENT,
+    Title TEXT NOT NULL,
+    Description TEXT NOT NULL
+);
