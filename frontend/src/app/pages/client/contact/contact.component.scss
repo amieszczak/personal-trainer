@@ -1,0 +1,165 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+.contact {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  @include section-gradient;
+  padding: 4rem 0;
+
+  @media (max-width: $breakpoint-md) {
+    padding: 3rem 0;
+  }
+
+  &__container {
+    width: 100%;
+    max-width: $max-width-content;
+    margin: 0 auto;
+    @include container-padding;
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+
+    @media (max-width: $breakpoint-lg) {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  &__title {
+    margin: 0 0 1rem 0;
+  }
+
+  &__text {
+    margin: 0;
+  }
+
+  &__info {
+    background: $color-bg-secondary;
+    padding: 1.5rem;
+    border-radius: $border-radius-md;
+    border-left: 4px solid $color-primary;
+  }
+
+  &__info-title {
+    margin: 0 0 1rem 0;
+  }
+
+  &__info-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+
+    li {
+      position: relative;
+      padding-left: 1.75rem;
+
+      &::before {
+        content: '✓';
+        position: absolute;
+        left: 0;
+        color: $color-primary;
+      }
+    }
+  }
+
+  &__details {
+    padding: 1.5rem;
+    background: $color-bg-primary;
+    border-radius: $border-radius-md;
+    box-shadow: $shadow-md;
+  }
+
+  &__details-title {
+    margin: 0 0 1.25rem 0;
+  }
+
+  &__details-item {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    padding: 0.75rem 0;
+    color: $color-text-tertiary;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid $color-bg-light;
+    }
+  }
+
+  &__icon {
+    color: $color-primary;
+    flex-shrink: 0;
+  }
+
+  &__form-wrapper {
+    @include card-large;
+    padding: 2rem;
+
+    @media (max-width: $breakpoint-md) {
+      padding: 1.5rem;
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  &__form-title {
+    margin: 0 0 0.5rem 0;
+  }
+
+  &__form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  &__input,
+  &__textarea {
+    padding: 0.875rem 1rem;
+    border: 2px solid $color-border-light;
+    border-radius: $border-radius-base;
+    @include transition;
+
+    &::placeholder {
+      color: $color-text-lighter;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: $color-primary;
+      box-shadow: 0 0 0 3px $color-primary-shadow-light;
+    }
+
+    &:hover {
+      border-color: $color-border-hover;
+    }
+  }
+
+  &__textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  &__submit {
+    @include button-primary-gradient;
+    padding: 1rem 2rem;
+    margin-top: 0.5rem;
+  }
+}
