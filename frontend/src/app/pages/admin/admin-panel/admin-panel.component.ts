@@ -66,4 +66,8 @@ export class AdminPanelComponent {
   navigateToTransformations(): void {
     this.router.navigate(['/admin-panel/transformations']);
   }
+
+  navigateToAchievements(): void {
+    this.router.navigate(['/admin-panel/achievements']);
+  }
 }
